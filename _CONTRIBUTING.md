@@ -120,6 +120,12 @@ make sure they work also.
 If rebasing broke anything, fix it, then repeat the above process until
 you get here again and nothing is broken and all the tests pass.
 
+### Push your branch to your fork
+
+```bash
+git push origin `your branch name`
+```
+
 ### Make a pull request
 
 Make a clear pull request from your fork and branch to the upstream master
