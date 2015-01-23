@@ -2,10 +2,11 @@ var express = require('express');
 // var partials = require('express-partials');
 var bodyParser = require('body-parser');
 var app = express();
+var crypto = require('crypto');
 
 // config file to instantiate all queues
 var queues = require('./queue/queueCollection.js');
-var queueModel = require('./queue/queueModel.js');
+var Queue = require('./queue/queueModel.js');
 
 var port = process.env.PORT || 3000;
 var host = process.env.host || '127.0.0.1';
@@ -24,7 +25,6 @@ app.use(express.static(__dirname));
 module.exports = app;
 
 app.get('/', function(request, response) {
-  console.log('yay!');
   response.redirect('./index.html');
 });
 
@@ -32,11 +32,18 @@ app.get('/', function(request, response) {
 //create a queue for that specific language queue, then 
 app.get('/api/getroom', function(request, response) {
 
-  var nativeLanguage = request.query.nativeLanguage;
-  var desiredLanguage = request.query.desiredLanguage;
+  var nativeLanguage = request.query.native;
+  var desiredLanguage = request.query.desired;
 
-  var partnerMatch = queues[queueModel.stringify(desiredLanguage,nativeLanguage)];
-  // if (partnerMatch.length > 0) {
-  //   partnerMatch.shift();
-  // }
+  console.log(nativeLanguage,desiredLanguage);
+  var partners = queues[Queue.stringify(desiredLanguage,nativeLanguage)];
+
+  if (partners.length() > 0) {
+    var partnerRoom = partners.shift();
+    response.status(200).send(partnerRoom);
+  } else {
+    var newRoom = crypto.pseudoRandomBytes(256).toString('base64');
+  	queues[Queue.stringify(nativeLanguage,desiredLanguage)].push(newRoom);
+    response.status(200).send(newRoom);
+  }
 });
