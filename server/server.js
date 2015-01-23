@@ -34,16 +34,22 @@ app.get('/api/getroom', function(request, response) {
 
   var nativeLanguage = request.query.native;
   var desiredLanguage = request.query.desired;
+  var requireNative = (request.query.requireNative === "true");
 
   console.log(nativeLanguage,desiredLanguage);
-  var partners = queues[Queue.stringify(desiredLanguage,nativeLanguage)];
 
-  if (partners.length() > 0) {
-    var partnerRoom = partners.shift();
+  var nonNativePartners = queues[Queue.stringify(nativeLanguage,desiredLanguage)];
+  var nativePartners = queues[Queue.stringify(desiredLanguage,nativeLanguage)];
+  var partnerRoom = null;
+  if (!requireNative && nonNativePartners.length() > 0) {
+    partnerRoom = nonNativePartners.shift();
+    response.status(200).send(partnerRoom);
+  } else if (nativePartners.length() > 0) {
+    partnerRoom = nativePartners.shift();
     response.status(200).send(partnerRoom);
   } else {
     var newRoom = crypto.pseudoRandomBytes(256).toString('base64');
-  	queues[Queue.stringify(nativeLanguage,desiredLanguage)].push(newRoom);
+    queues[Queue.stringify(nativeLanguage,desiredLanguage)].push(newRoom);
     response.status(200).send(newRoom);
   }
 });
