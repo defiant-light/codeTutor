@@ -4,7 +4,7 @@
   "main": "server/server.js",
   "description": "Language learning whenever you want!",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
