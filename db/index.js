@@ -1,0 +1,1 @@
+var sequelize = new Sequelize('queue', 'root', '');

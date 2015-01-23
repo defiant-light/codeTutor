@@ -1,6 +1,7 @@
 {
   "name": "Aberrant-Marble",
   "version": "0.0.1",
+  "main": "server/server.js",
   "description": "Language learning whenever you want!",
   "main": "index.js",
   "scripts": {
