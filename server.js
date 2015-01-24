@@ -50,7 +50,9 @@ app.get('/api/getroom', function(request, response) {
     partnerRoom = nativePartners.shift();
     response.status(200).send(partnerRoom);
   } else {
+    console.log('new room')
     var newRoom = crypto.pseudoRandomBytes(256).toString('base64');
+    console.log(newRoom)
     queues[Queue.stringify(nativeLanguage,desiredLanguage)].push(newRoom);
     response.status(200).send(newRoom);
   }
