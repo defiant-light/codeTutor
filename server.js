@@ -5,8 +5,8 @@ var app = express();
 var crypto = require('crypto');
 
 // config file to instantiate all queues
-var queues = require('./queue/queueCollection.js');
-var Queue = require('./queue/queueModel.js');
+var queues = require('./server/queue/queueCollection.js');
+var queueModel = require('./server/queue/queueModel.js');
 
 var port = process.env.PORT || 3000;
 var host = process.env.host || '127.0.0.1';
@@ -19,6 +19,7 @@ console.log('Server now listening on port ' + port);
 // app.use(bodyParser.json());
 app.set('views', __dirname);
 app.use(express.static(__dirname));
+console.log(__dirname);
 // app.use(express.cookieParser('shhhh, very secret'));
 // app.use(express.session());
 
@@ -31,6 +32,7 @@ app.get('/', function(request, response) {
 //when a user clicks his native and desired language and clicks go, send a post request to api/languages
 //create a queue for that specific language queue, then 
 app.get('/api/getroom', function(request, response) {
+
 
   var nativeLanguage = request.query.native;
   var desiredLanguage = request.query.desired;
@@ -48,7 +50,9 @@ app.get('/api/getroom', function(request, response) {
     partnerRoom = nativePartners.shift();
     response.status(200).send(partnerRoom);
   } else {
+    console.log('new room')
     var newRoom = crypto.pseudoRandomBytes(256).toString('base64');
+    console.log(newRoom)
     queues[Queue.stringify(nativeLanguage,desiredLanguage)].push(newRoom);
     response.status(200).send(newRoom);
   }

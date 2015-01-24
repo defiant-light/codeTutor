@@ -1,11 +1,10 @@
 {
   "name": "Aberrant-Marble",
   "version": "0.0.1",
-  "main": "server/server.js",
+  "main": "server.js",
   "description": "Language learning whenever you want!",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",

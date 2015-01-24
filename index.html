@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app='languageApp'>
+<head>
+  <script type='text/javascript' src='http://cdn.icecomm.io/icecomm.js'></script>
+  <script type='text/javascript' src='bower_components/angular/angular.min.js'></script>
+  <script type='text/javascript' src='client/languageApp.js'></script>
+
+
+</head>
+<body >
+  <div ng-controller='selectLanguageController'>
+    <form>
+      I speak:
+      <select id='nativeLanguage' ng-model='language.native'>
+        <option ng-repeat='language in languages' value='{{ language }}'>{{ language }}</option>
+      </select> 
+      I want to learn:
+      <select id='desiredLanguage' ng-model='language.desired'>
+        <option ng-repeat='language in languages' value='{{ language }}'>{{ language }}</option>
+      </select> 
+      <input type='submit' ng-click='submitLanguages(language)'>
+    </form>
+  </div>
+  <div>
+  <video id='localVideo' autoplay></video>
+  <script>
+    
+    
+
+  </script>
+  </div>
+</body>
+</html>
