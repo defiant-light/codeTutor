@@ -8,7 +8,7 @@ angular.module('languageApp', [])
     return $http({
       method: 'GET',
       url: '/api/getroom',
-      data: languageSelections
+      params: languageSelections
     })
   }
 })
