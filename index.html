@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app='languageApp'>
+<head>
+  <script type='text/javascript' src='http://cdn.icecomm.io/icecomm.js'></script>
+  <script type='text/javascript' src='bower_components/angular/angular.min.js'></script>
+  <script type='text/javascript' src='client/languageApp.js'></script>
+
+
+</head>
+<body >
+  <div ng-controller='selectLanguageController'>
+    <form>
+      I speak:
+      <select id='nativeLanguage' ng-model='language.native'>
+        <option ng-repeat='language in languages' value='{{ language }}'>{{ language }}</option>
+      </select> 
+      I want to learn:
+      <select id='desiredLanguage' ng-model='language.desired'>
+        <option ng-repeat='language in languages' value='{{ language }}'>{{ language }}</option>
+      </select> 
+      <input type='submit' ng-click='submitLanguages(language)'>
+    </form>
+  </div>
+  <div>
+  <video id='localVideo' autoplay></video>
+  <script>
+    var comm = new Icecomm('IbQqKDNCGQS7b94Mllk/iHOJbeSe/UrJJy6l1BbqEbP0fKaK');
+
+    comm.connect('funtimes');
+
+    comm.on('local', function(options) {
+      localVideo.src = options.stream;
+    });
+
+    comm.on('connected', function(options) {
+      console.log('hello');
+      document.body.appendChild(options.video);
+    });
+
+    comm.getRooms();
+
+    comm.on('disconnect', function(options) {
+      document.getElementById(options.callerID).remove();
+    });
+
+  </script>
+  </div>
+</body>
+</html>

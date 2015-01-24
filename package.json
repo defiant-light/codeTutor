@@ -1,10 +1,10 @@
 {
   "name": "Aberrant-Marble",
   "version": "0.0.1",
-  "main": "server/server.js",
+  "main": "server.js",
   "description": "Language learning whenever you want!",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
