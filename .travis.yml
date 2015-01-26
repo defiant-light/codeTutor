@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- '0.8'
+- '0.10'
+deploy:
+  provider: elasticbeanstalk
+  region: us-west-1
+  app: Aberrant-Marble
+  env: Aberrant-Marble-deploy
+  bucket_name: elasticbeanstalk-us-west-1-761697825478
+  access_key_id:
+    secure: gYuUttvtR7xSl/Q0BKpDe+MOC/J0VzP+ywkG0okW/AJ0AmaWpgTKlgoDQP8lFjKC51TWw4E2zUDZmOGRopyegfEhClE2J0/F9sewCrPjizuquv0HFbp5DYKKg8SuZIB5QmQfiRaog6VKmBMiFRxM+U0PdR59/QPVYCV5PxdPyT0=
+  secret_access_key:
+    secure: I7ImOjDlGYlXnD4cCHOJrEeRn6Oy02TNH3uCmQiR5nAD9T0PbujjFDkOHOmRKavuP/f96Azyj98Y9hj+uhWcPoemspyZFbDkx6FpaGErSw7M3Br1TqfJD+m5OTIxEowi5YaRvxnmgTSqPxliPvr+UZhgIGcDZgf1ZydbUSr7rN0=
