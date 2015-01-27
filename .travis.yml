@@ -8,5 +8,4 @@ deploy:
   env: Aberrant-Marble-deploy
   bucket_name: elasticbeanstalk-us-west-1-761697825478
   access_key_id: AKIAIENZCAOTSMLPG6PA
-  secret_access_key:
-    secure: ImAQT96Y3YIj8pJ/MF3Qs1ny520QMAPV2dyGpuN7ror4bT7wpo9u5ugh8+ghtrIIqGrIHVNv4qAJpgV7Y2WytieUKN50ZqpG8ldpdEKPq00qFiQkOZoWj1gvV733AnwL3mX1DLIt9XArYllNryXSIXyeyCxxWGKL8gYrpG6JZ3A=
+  secret_access_key: cMkpJy5NgjKPm6PPMiT91/AMGP9lScaoELAP16wh
