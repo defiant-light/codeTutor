@@ -7,7 +7,6 @@ deploy:
   app: Aberrant-Marble
   env: Aberrant-Marble-deploy
   bucket_name: elasticbeanstalk-us-west-1-761697825478
-  access_key_id:
-    secure: fhDsyGyZVhEEzccaxD8h0pDnRPizAB2XrOVZpOXjj8KAsePi/S8brqVegz9xsszR4wRRvpQMM+DJthUOp7FxL5l3uq0ApT7UVoukT8IVJCRFTFDI/A0t7kPzEcRRJ4FLI37wnqHSq5TYskEgyd2ou8jrzYgx+/7uvoJP+sGOB38=
+  access_key_id: AKIAIENZCAOTSMLPG6PA
   secret_access_key:
-    secure: JsCNhFiX+gWiUlHX6uIcgMcKpqcMy7A23wQJFybcOYa7FMSWkuyhGYiJNFpk4uKT9HwlCqb/bS88R4JBiOLtxqTUBTxLDMbFrrISLRJVfZBCqd8mdaU0fJeoRhUTIRQNmWV8oMNhfSIzJFdkc8xiNYsIMhzVYrikG5A31tzzT+E=
+    secure: YNtc3oUjlsJy/N1mS+6jwtxI8wDgvJD3HRclyF21SAKNrH3Mh3tT/I5ckAXnzv/y5YDcORaxYVKgtqFCjI14W5X8nnkT009I8LLhXH75Si8DsI0ia8KJKMHcNzW5PR6iy1oDgp5YvSiAlVi2IrXHD3cQwowHm4nNI2P1XrfTlx8=
