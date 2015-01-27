@@ -9,4 +9,4 @@ deploy:
   bucket_name: elasticbeanstalk-us-west-1-761697825478
   access_key_id: AKIAIENZCAOTSMLPG6PA
   secret_access_key:
-    secure: YNtc3oUjlsJy/N1mS+6jwtxI8wDgvJD3HRclyF21SAKNrH3Mh3tT/I5ckAXnzv/y5YDcORaxYVKgtqFCjI14W5X8nnkT009I8LLhXH75Si8DsI0ia8KJKMHcNzW5PR6iy1oDgp5YvSiAlVi2IrXHD3cQwowHm4nNI2P1XrfTlx8=
+    secure: fr5xr7xY+3oNwCqDUaBmwjy6+HU+cO/YeH1XBtzfRptbh4z3+0n+wOCcUFE6xhhCJb0Wft4g1Q9BoQwMwzxWhYZmDBos5dpXsxDc5LySpka/8R0ISPvOx1eyLQ5yJbeAEPepMYhjJQvZrk7FB1QKkNxO/tpn3b1P+Qb336noaMg=
