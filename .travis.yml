@@ -4,8 +4,9 @@ node_js:
 deploy:
   provider: elasticbeanstalk
   region: us-west-1
-  app: Aberrant-Marble
-  env: Aberrant-Marble-deploy
-  bucket_name: elasticbeanstalk-us-west-1-761697825478
-  access_key_id: AKIAIENZCAOTSMLPG6PA
-  secret_access_key: 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
+  app: am
+  env: am-dev
+  bucket_name: elasticbeanstalk-us-west-1-704220101114
+  access_key_id: AKIAI6WO274TANRDLGIQ
+  secret-access-key:
+    secure: gXf7ECaRidkok5n0RqnW4zdhMUg0Rpbi3FaXy1kR2SSFHGKQ5AXD8kWYCqhuj1UW0NXIaKP4vCNFW4qWdWAUq1yPxyhGNQ1WduPSCYoZlahOkj4CWceSd3/H2Y2jmnM5ETm3DMQYKh04g9IuxYTSxZc2avxyysniIhYVQ0t/esY=
