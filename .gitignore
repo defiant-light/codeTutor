@@ -31,3 +31,8 @@ bower_components/
 
 # Amazon security information
 rootkey.csv
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
