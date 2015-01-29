@@ -23,7 +23,7 @@ angular.module('languageApp', [])
       });
 
       $scope.comm.on('connected', function(options) {
-        document.body.appendChild(options.video);
+        document.body.insertBefore(options.video, document.getElementById('chatBox'));
         $scope.$apply(function() { 
           $scope.showChatBox = true; 
         });
@@ -35,7 +35,9 @@ angular.module('languageApp', [])
 
       $scope.comm.on('disconnect', function(options) {
         document.getElementById(options.callerID).remove();
-        $scope.showChatBox = false;
+        $scope.$apply(function() {
+          $scope.showChatBox = false;
+        });
       });
     })
   }

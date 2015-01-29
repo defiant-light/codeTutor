@@ -22,7 +22,7 @@
       <input type='submit' ng-click='submitLanguages(language)'>
     </form>
   </div>
-  <div class='localVideo'>
+  <div id='myVideo'>
   <video id='localVideo' autoplay></video>
   <script>
     
@@ -32,8 +32,9 @@
 
   <!-- make changes in this commment to see if stuff is correctly propagating on depoy 3 --> 
   </div>
-  <div class='chatBox' ng-show='showChatBox'>
+  <div id='chatBox' ng-show='showChatBox'>
     <form>
+      <textarea style='width: 250px; height: 100px;resize: none' readonly></textarea>
       <input type='text' ng-model='msg'>
       <input type='button' value='send' ng-click='sendMsg()'>
     </form>
