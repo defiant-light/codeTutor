@@ -4,6 +4,9 @@ angular.module('languageApp', [])
   $scope.languages = ['english','chinese','spanish','french','italian'];
   $scope.language = {};
 
+  $scope.showChatBox = false;
+  $scope.msg = '';
+
   $scope.submitLanguages = function(languageSelections){
     return $http({
       method: 'GET',
@@ -11,21 +14,33 @@ angular.module('languageApp', [])
       params: languageSelections
     })
     .success(function(data){
-      var comm = new Icecomm('IbQqKDNCGQS7b94Mllk/iHOJbeSe/UrJJy6l1BbqEbP0fKaK');
+      $scope.comm = new Icecomm('IbQqKDNCGQS7b94Mllk/iHOJbeSe/UrJJy6l1BbqEbP0fKaK');
 
-      comm.connect(data);
+      $scope.comm.connect(data);
 
-      comm.on('local', function(options) {
+      $scope.comm.on('local', function(options) {
         localVideo.src = options.stream;
       });
 
-      comm.on('connected', function(options) {
+      $scope.comm.on('connected', function(options) {
         document.body.appendChild(options.video);
+        $scope.$apply(function() { 
+          $scope.showChatBox = true; 
+        });
       });
 
-      comm.on('disconnect', function(options) {
+      $scope.comm.on('data', function(options) {
+        console.log(options.data);
+      })
+
+      $scope.comm.on('disconnect', function(options) {
         document.getElementById(options.callerID).remove();
+        $scope.showChatBox = false;
       });
     })
+  }
+
+  $scope.sendMsg = function(){
+    $scope.comm.send($scope.msg);
   }
 })
