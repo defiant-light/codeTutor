@@ -19,6 +19,11 @@
   "dependencies": {
     "body-parser": "^1.10.2",
     "express": "^4.11.1",
-    "sequelize": "^2.0.0-rc8"
+    "mysql": "^2.5.4",
+    "sequelize": "^2.0.0-rc8",
+    "sequelize-cli": "^1.0.6"
+  },
+  "devDependencies": {
+    "sqlite3": "^3.0.4"
   }
 }
