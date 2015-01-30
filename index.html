@@ -8,8 +8,8 @@
 
 
 </head>
-<body >
-  <div ng-controller='selectLanguageController'>
+<body ng-controller='selectLanguageController'>
+  <div>
     <form>
       I speak:
       <select id='nativeLanguage' ng-model='language.native'>
@@ -22,7 +22,7 @@
       <input type='submit' ng-click='submitLanguages(language)'>
     </form>
   </div>
-  <div>
+  <div id='myVideo'>
   <video id='localVideo' autoplay></video>
   <script>
     
@@ -31,6 +31,13 @@
   </script>
 
   <!-- make changes in this commment to see if stuff is correctly propagating on depoy 3 --> 
+  </div>
+  <div id='chatBox' ng-show='showChatBox'>
+    <form>
+      <textarea style='width: 250px; height: 100px;resize: none' readonly ng-model='convo'></textarea><br>
+      <input type='text' style='width: 250px' ng-model='msg'>
+      <input type='button' value='send' ng-click='sendMsg()'>
+    </form>
   </div>
 </body>
 </html>
