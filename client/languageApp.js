@@ -47,10 +47,19 @@ angular.module('languageApp', [])
   }
 
   $scope.sendMsg = function(){
-    $scope.comm.send($scope.msg);
-    $scope.convo += 'Me: ' + $scope.msg + '\n';
-    $scope.msg = ''
-    $scope.scrollBottom();
+    if($scope.msg.trim() !== '') {
+      $scope.comm.send($scope.msg);
+      $scope.convo += 'Me: ' + $scope.msg + '\n';
+      $scope.msg = ''
+      $scope.scrollBottom();
+      document.getElementById('chatMsg').focus();
+    }
+  }
+
+  $scope.handleKeyPress = function(event){
+    if(event.which === 13) {
+      $scope.sendMsg();
+    }
   }
 
   $scope.scrollBottom = function(){
