@@ -6,6 +6,7 @@ angular.module('languageApp', [])
 
   $scope.showChatBox = false;
   $scope.msg = '';
+  $scope.convo = '';
 
   $scope.submitLanguages = function(languageSelections){
     return $http({
@@ -30,7 +31,9 @@ angular.module('languageApp', [])
       });
 
       $scope.comm.on('data', function(options) {
-        console.log(options.data);
+        $scope.$apply(function(){
+          $scope.convo += 'You: ' + options.data + '\n';
+        });
       })
 
       $scope.comm.on('disconnect', function(options) {
@@ -44,5 +47,7 @@ angular.module('languageApp', [])
 
   $scope.sendMsg = function(){
     $scope.comm.send($scope.msg);
+    $scope.convo += 'Me: ' + $scope.msg + '\n';
+    $scope.msg = ''
   }
 })

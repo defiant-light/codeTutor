@@ -34,8 +34,8 @@
   </div>
   <div id='chatBox' ng-show='showChatBox'>
     <form>
-      <textarea style='width: 250px; height: 100px;resize: none' readonly></textarea>
-      <input type='text' ng-model='msg'>
+      <textarea style='width: 250px; height: 100px;resize: none' readonly ng-model='convo'></textarea><br>
+      <input type='text' style='width: 250px' ng-model='msg'>
       <input type='button' value='send' ng-click='sendMsg()'>
     </form>
   </div>
