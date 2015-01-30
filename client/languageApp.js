@@ -52,6 +52,7 @@ angular.module('languageApp', [])
       $scope.convo += 'Me: ' + $scope.msg + '\n';
       $scope.msg = ''
       $scope.scrollBottom();
+      document.getElementById('chatMsg').focus();
     }
   }
 
