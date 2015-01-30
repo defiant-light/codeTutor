@@ -33,11 +33,9 @@
   <!-- make changes in this commment to see if stuff is correctly propagating on depoy 3 --> 
   </div>
   <div id='chatApp' ng-show='showChatApp'>
-    <form>
-      <textarea id='chatBox' style='width: 250px; height: 100px;resize: none' readonly ng-model='convo'></textarea><br>
-      <input type='text' style='width: 250px' ng-model='msg'>
-      <input type='button' value='send' ng-click='sendMsg()'>
-    </form>
+    <textarea id='chatBox' style='width: 250px; height: 100px;resize: none' readonly ng-model='convo'></textarea><br>
+    <input type='text' style='width: 250px' ng-keypress='handleKeyPress($event)' ng-model='msg'>
+    <input type='button' value='send' ng-click='sendMsg()'>
   </div>
 </body>
 </html>
