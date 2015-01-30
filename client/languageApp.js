@@ -4,7 +4,7 @@ angular.module('languageApp', [])
   $scope.languages = ['english','chinese','spanish','french','italian'];
   $scope.language = {};
 
-  $scope.showChatBox = false;
+  $scope.showChatApp = false;
   $scope.msg = '';
   $scope.convo = '';
 
@@ -24,22 +24,23 @@ angular.module('languageApp', [])
       });
 
       $scope.comm.on('connected', function(options) {
-        document.body.insertBefore(options.video, document.getElementById('chatBox'));
+        document.body.insertBefore(options.video, document.getElementById('chatApp'));
         $scope.$apply(function() { 
-          $scope.showChatBox = true; 
+          $scope.showChatApp = true; 
         });
       });
 
       $scope.comm.on('data', function(options) {
         $scope.$apply(function(){
           $scope.convo += 'You: ' + options.data + '\n';
+          $scope.scrollBottom();
         });
       })
 
       $scope.comm.on('disconnect', function(options) {
         document.getElementById(options.callerID).remove();
         $scope.$apply(function() {
-          $scope.showChatBox = false;
+          $scope.showChatApp = false;
         });
       });
     })
@@ -49,5 +50,11 @@ angular.module('languageApp', [])
     $scope.comm.send($scope.msg);
     $scope.convo += 'Me: ' + $scope.msg + '\n';
     $scope.msg = ''
+    $scope.scrollBottom();
+  }
+
+  $scope.scrollBottom = function(){
+    var chatBox = document.getElementById('chatBox');
+    chatBox.scrollTop = chatBox.scrollHeight;
   }
 })
