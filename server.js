@@ -3,25 +3,42 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var crypto = require('crypto');
+var session = require('express-session');
 
+// config file to instantiate 
+var User = require('./server/user/userController');
+var Users = require('./db/index');
 // config file to instantiate all queues
 var queues = require('./server/queue/queueCollection.js');
 var queueModel = require('./server/queue/queueModel.js');
 
+var passport = require('./server/facebookSignin.js');
+
 var port = process.env.PORT || 3000;
 var host = process.env.host || '127.0.0.1';
+
+
+app.use(express.static(__dirname));
+// app.use(express.cookieParser('shhhh, very secret'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true
+}));
+
 
 app.listen(port);
 
 console.log('Server now listening on port ' + port);
 
 // app.use(partials());
-// app.use(bodyParser.json());
+
+
 app.set('views', __dirname);
-app.use(express.static(__dirname));
-console.log(__dirname);
-// app.use(express.cookieParser('shhhh, very secret'));
-// app.use(express.session());
 
 module.exports = app;
 
@@ -50,10 +67,28 @@ app.get('/api/getroom', function(request, response) {
     partnerRoom = nativePartners.shift();
     response.status(200).send(partnerRoom);
   } else {
-    console.log('new room')
+    console.log('new room');
     var newRoom = crypto.pseudoRandomBytes(256).toString('base64');
-    console.log(newRoom)
+    console.log(newRoom);
     queues[Queue.stringify(nativeLanguage,desiredLanguage)].push(newRoom);
     response.status(200).send(newRoom);
   }
 });
+
+app.get('/signup', User.signUpUserForm);
+app.post('/signup', User.signUpUser);
+
+app.get('/signin', User.signInUserForm);
+app.post('/signin', User.signInUser);
+
+
+//Passport facebook auth
+app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_birthday', 'user_likes'] }));
+
+// Facebook will redirect the user to this URL after approval.  Finish the
+// authentication process by attempting to obtain an access token.  If
+// access was granted, the user will be logged in.  Otherwise,
+// authentication has failed.
+app.get('/auth/facebook/callback', 
+  passport.authenticate('facebook', { successRedirect: '/',
+                                      failureRedirect: '/login' }));
