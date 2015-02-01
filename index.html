@@ -1,41 +1,154 @@
 <!DOCTYPE html>
 <html ng-app='languageApp'>
 <head>
-  <script type='text/javascript' src='http://cdn.icecomm.io/icecomm.js'></script>
-  <!-- <script type='text/javascript' src='bower_components/angular/angular.min.js'></script> -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+   <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+   <!-- <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"> -->
+   <link href="bower_components/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+   <link href="client/styles.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>  
   <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+  <script type='text/javascript' src="bower_components/ngFx/dist/ngFx.min.js"></script>
+  <script type='text/javascript' src='http://cdn.icecomm.io/icecomm.js'></script>
+
   <script type='text/javascript' src='client/languageApp.js'></script>
-
-
 </head>
-<body ng-controller='selectLanguageController'>
-  <div>
-    <form>
-      I speak:
-      <select id='nativeLanguage' ng-model='language.native'>
-        <option ng-repeat='language in languages' value='{{ language }}'>{{ language }}</option>
-      </select> 
-      I want to learn:
-      <select id='desiredLanguage' ng-model='language.desired'>
-        <option ng-repeat='language in languages' value='{{ language }}'>{{ language }}</option>
-      </select> 
-      <input type='submit' ng-click='submitLanguages(language)'>
-    </form>
-  </div>
-  <div id='myVideo'>
-  <video id='localVideo' autoplay></video>
-  <script>
-    
-    
+<body ng-controller='HomePageController'>
 
-  </script>
+   <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">LanguageBuddy</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><button type="button" class="btn btn-success navbar-btn">Sign in</button></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
 
-  <!-- make changes in this commment to see if stuff is correctly propagating on depoy 3 --> 
-  </div>
-  <div id='chatApp' ng-show='showChatApp'>
-    <textarea id='chatBox' style='width: 250px; height: 100px;resize: none' readonly ng-model='convo'></textarea><br>
-    <input id='chatMsg' type='text' style='width: 250px' ng-keypress='handleKeyPress($event)' ng-model='msg'>
-    <input type='button' value='send' ng-click='sendMsg()'>
-  </div>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Talk French with a Frenchman.</h1>
+        <p>LanguageBuddy instantly connects you with other language learners so you can practice conversation together.</p>
+       
+        <br>
+        <h2> I want to speak...  </h2>
+
+        <ANY ng-switch="val">
+          <ANY ng-switch-when="val=0"></ANY>
+          <div ng-switch-when="matchValue1" class="list-group col-md-4">
+          <a href="#" ng-click="val='1'" class="list-group-item">
+            <span class="flag-icon flag-icon-es"></span>
+            Spanish
+            <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
+          </a>
+          <a href="#" class="list-group-item">
+            <span class="flag-icon flag-icon-fr"></span>
+            French
+            <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
+          </a>
+          <a href="#" class="list-group-item">
+            <span class="flag-icon flag-icon-cn"></span>
+            Chinese
+            <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
+          </a>
+          <a href="#" class="list-group-item">
+            <span class="flag-icon flag-icon-pt"></span>
+            Portuguese
+            <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
+          </a>
+          <a href="#" class="list-group-item">
+            <span class="flag-icon flag-icon-de"></span>
+            German
+            <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
+          </a>
+          <a href="#" class="list-group-item">
+            <span class="flag-icon flag-icon-it"></span>
+            Italian
+            <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
+          </a>
+        </div>
+
+          <ANY ng-switch-when="matchValue2">...</ANY>
+          <ANY ng-switch-default>...</ANY>
+        </ANY>
+
+        
+
+        <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Get Started &raquo;</a></p> -->
+      </div>
+    </div>
+
+
+        <!-- <div>
+          <form>
+            I speak:
+            <select id='nativeLanguage' ng-model='language.native'>
+              <option ng-repeat='language in languages' value='{{ language }}'>{{ language }}</option>
+            </select> 
+            I want to learn:
+            <select id='desiredLanguage' ng-model='language.desired'>
+              <option ng-repeat='language in languages' value='{{ language }}'>{{ language }}</option>
+            </select> 
+            <input type='submit' ng-click='submitLanguages(language)'>
+          </form>
+        </div> -->
+
+      <!-- Example row of columns -->
+    <!--   <div class="row">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+      </div> -->
+
+
+
+     <!--  <div id='myVideo'>
+        <video id='localVideo' autoplay></video> -->
+        <!-- make changes in this commment to see if stuff is correctly propagating on depoy 3 -->
+      <!-- </div>
+      <div id='chatApp' ng-show='showChatApp'>
+        <textarea id='chatBox' style='width: 250px; height: 100px;resize: none' readonly ng-model='convo'></textarea><br>
+        <input id='chatMsg' type='text' style='width: 250px' ng-keypress='handleKeyPress($event)' ng-model='msg'>
+        <input type='button' value='send' ng-click='sendMsg()'>
+      </div> -->
+
+      <div class="container">
+
+      <hr>
+
+      <footer>
+        <p>&copy; LanguageBuddy, Inc. 2014</p>
+      </footer>
+    </div> <!-- /container -->
 </body>
 </html>
