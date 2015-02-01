@@ -17,9 +17,13 @@
   },
   "homepage": "https://github.com/Aberrant-Marble/Aberrant-Marble",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.10.2",
     "express": "^4.11.1",
+    "express-session": "^1.10.1",
     "mysql": "^2.5.4",
+    "passport": "^0.2.1",
+    "passport-facebook": "^1.0.3",
     "sequelize": "^2.0.0-rc8",
     "sequelize-cli": "^1.0.6"
   },
