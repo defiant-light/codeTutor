@@ -26,7 +26,6 @@ var miscCSS = gulp.src(['./bower_components/bootstrap/dist/css/bootstrap.min.css
 //   return target.pipe(inject(sources))
 //     .pipe(gulp.dest('./'));
 // });
-
 // concatenate and minify app sources
 var appStream = gulp.src(paths.scripts)
   .pipe(concat('app.js'))
