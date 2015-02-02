@@ -16,11 +16,11 @@ var miscCSS = gulp.src(['./bower_components/bootstrap/dist/css/bootstrap.min.css
     './bower_components/flag-icon-css/css/flag-icon.css',
     './client/styles.css'])
   .pipe(concat('bower.css'))
-  .pipe(gulp.dest('./build'));
+  .pipe(gulp.dest('./client/css'));
 
 var appStream = gulp.src(paths.scripts)
   .pipe(concat('app.js'))
-  .pipe(gulp.dest('./build'));
+  .pipe(gulp.dest('./client/js'));
 
 // Concatenate vendor scripts 
 var vendor = gulp.src([
@@ -29,7 +29,7 @@ var vendor = gulp.src([
     './bower_components/bootstrap/dist/js/bootstrap.min.js'
     ])
   .pipe(concat('vendors.js'))
-  .pipe(gulp.dest('./build'));
+  .pipe(gulp.dest('./client/js'));
  
 gulp.task('scripts', function() {
   return gulp.src('./index.html')
