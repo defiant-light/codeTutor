@@ -1,4 +1,4 @@
-angular.module('languageApp', ['googleTranslateModule', 'ngFx'])
+angular.module('languageApp', ['translateModule', 'ngFx'])
 
 .controller('selectLanguageController', function($scope, $http, Translate) {
   $scope.languages = [['English','us'],['Chinese','cn'],['Spanish','es'],['French','fr'],['Italian','it']];

@@ -1,4 +1,4 @@
-angular.module('googleTranslateModule', [])
+angular.module('translateModule', [])
 
 .factory('Translate', function($http){
 
