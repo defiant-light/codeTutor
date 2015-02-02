@@ -34,7 +34,7 @@ To get up and running on your local development machine:
 ## Contributing Guidelines
 
 If you would like to make a contribution, please see the contribution guide for the git workflow.  
-<https://github.com/yokangy/Aberrant-Marble/blob/docs/CONTRIBUTING.md>
+<https://github.com/Aberrant-Marble/Aberrant-Marble/blob/master/CONTRIBUTING.md>
 
 For any bugs or issues, please create a new issue at:  
 <https://github.com/Aberrant-Marble/Aberrant-Marble/issues>
