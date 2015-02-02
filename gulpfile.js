@@ -49,6 +49,19 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('./'));
 });
 
+var paths = {
+  scripts: ['client/**/*.js']
+
+};
+gulp.task('scripts', function() {
+  return gulp.src(paths.scripts)
+    .pipe(jshint())
+    .pipe(concat('main.js'))
+      .pipe(rename({suffix: '.min'}))
+      .pipe(uglify())
+      .pipe(gulp.dest('build/js'));
+});
+
 gulp.task('browser-sync', function() {
   browserSync({
     proxy: "http://localhost:3000"
@@ -58,6 +71,7 @@ gulp.task('browser-sync', function() {
 gulp.task('serve', function () {
   nodemon({ script: 'server.js', ignore: ['node_modules/**/*.js'] });
 });
+
 
 gulp.task('default', ['scripts', 'browser-sync'], function() {
   gulp.watch(paths.scripts, ['scripts', browserSync.reload]);
