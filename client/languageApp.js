@@ -22,12 +22,14 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
 
       $scope.comm.connect(data);
 
+      // Show video of the user
       $scope.comm.on('local', function(options) {
         localVideo.src = options.stream;
       });
 
+      // When two people are connected, display the video of the language partner
+      // and show the chat app
       $scope.comm.on('connected', function(options) {
-
         var foreignVidDiv = $('<div></div>');
         foreignVidDiv.append(options.video);
         foreignVidDiv.children().addClass('foreignVideo');
@@ -38,6 +40,9 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
         });
       });
 
+      // When a chat message is received from the language partner,
+      // translate the message using Google Translate and
+      // display both the original message and the translated message
       $scope.comm.on('data', function(options) {
         $scope.$apply(function(){
           Translate.translateMsg(options.data, $scope.language.native, $scope.language.desired)
@@ -51,6 +56,7 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
         });
       })
 
+      // When the language partner leaves, remove the video and chatbox
       $scope.comm.on('disconnect', function(options) {
         document.getElementById(options.callerID).remove();
         $scope.$apply(function() {
@@ -60,6 +66,8 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
     })
   }
 
+  // Function to send a message to the language partner
+  // and display the sent message in the chatbox
   $scope.sendMsg = function(){
     if($scope.msg.trim() !== '') {
       $scope.comm.send($scope.msg);
@@ -70,14 +78,17 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
     }
   }
 
+  // Function to send a chat message when the enter/return
+  // button is pressed
   $scope.handleKeyPress = function(event){
     if(event.which === 13) {
       $scope.sendMsg();
     }
   }
 
+  // Function to move the scroll bar to the bottom of the textarea
   $scope.scrollBottom = function(){
     var chatBox = document.getElementById('chatBox');
-    chatBox.scrollTop = chatBox.scrollHeight;
+    chatBox.scrollTop = 99999;
   }
 })
