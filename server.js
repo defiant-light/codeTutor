@@ -77,8 +77,7 @@ app.get('/api/getroom', function(request, response) {
 
 app.get('/api/position', function(req, res) {
   var room = req.query.room;
-  var native = req.query.native;
-  var desired = req.query.desired;
+
   
 
   // response.s 

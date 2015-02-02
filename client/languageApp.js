@@ -27,7 +27,12 @@ angular.module('languageApp', ['googleTranslateModule', 'ngFx'])
       });
 
       $scope.comm.on('connected', function(options) {
-        document.getElementById('videos').insertBefore(options.video, document.getElementById('myVideo'));
+
+        var foreignVidDiv = $('<div></div>');
+        foreignVidDiv.append(options.video);
+        foreignVidDiv.children().addClass('foreignVideo');
+        $('#videos').prepend(foreignVidDiv);
+        // document.getElementById('videos').insertBefore(document.createElement("$BUTTON")options.video, document.getElementById('myVideo'));
         $scope.$apply(function() { 
           $scope.showChatApp = true; 
         });

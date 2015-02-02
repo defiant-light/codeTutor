@@ -11,3 +11,13 @@ body {
 .left {
   float:left;
 }
+
+#localVideo {
+  width: 160px;
+  height: 120px;
+}
+
+.foreignVideo {
+  width: 640px;
+  height: 480px;
+}
