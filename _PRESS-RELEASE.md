@@ -20,34 +20,26 @@ Once the project moves into development, the press release can be used as a touc
   Language Exchange
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-  People who are trying to learn a new language get to practice with another person.
+  People who are trying to learn a new language can now practice with another person through the Language Exchange.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
   Are you trying to learn a language? Do you need someone to practice speaking with? This product will connect you with another person
-  immediately through video chat to practice your language skills.
+  through video chat to practice your language skills.
 
 ## Problem ##
-  > Describe the problem your product solves.
   When learning a new language there's a lack of opportunity to practice live speaking and comprehension.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
-  Now anyone can practice anytime, anywhere with another person.
+  Now anyone can practice anytime, anywhere with another person. Just open up the Language Exchange to be connected to a live partner.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
   Are you trying to learn a language? Do you need someone to practice speaking with? With our product get to fluency faster than you thought you would.
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
   Just fire up your browser and we'll connect you with a language partner.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
   I've tried Rosetta Stone. I've tried Pimsleur. Actually talking with a live person kept me engaged and the social interaction kept me coming back.
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
   Go to the Language Exchange now!
