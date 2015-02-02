@@ -1,6 +1,6 @@
-var Users = require('../db/index');
+// Using passport (http://passportjs.org/guide/facebook/) to authenticate users from Facebook.
 
-// Using passport (http://passportjs.org/guide/facebook/) to authenticate users.
+var Users = require('../db/index');
 
 var passport = require('passport'), FacebookStrategy = require('passport-facebook').Strategy; 
 
@@ -13,6 +13,7 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+//move clientID and secret as to not expose credentials
 passport.use(new FacebookStrategy({
     clientID: 632339323578963,
     clientSecret: '3539c1560e204c8c307edf5649177903',
@@ -21,7 +22,7 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
     var profileIdString = profile.id.toString();
 
-    process.nextTick(function () { //used for async (save user to database here?)
+    process.nextTick(function () { 
       Users.findOne({where: { facebookId: profileIdString }})
       .then(function(user) {
         if (user) {

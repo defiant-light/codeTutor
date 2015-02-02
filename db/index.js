@@ -1,10 +1,13 @@
+// Use sequelize as our ORM. Currently just a user table is needed
+
 var Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('languageapp', 'root', '', {
+var sequelize = new Sequelize('languageapp', 'aberrantmarble', 'hr23greenfield', {
+  host: process.env.languageappdb || 'http://localhost',
+  port: process.env.languageappdbport || 3306,
   dialect: 'mysql',
 });
 
-//maybe don't need?
 sequelize
   .authenticate()
   .complete(function(err) {
@@ -18,8 +21,8 @@ sequelize
 var User = sequelize.define('User', {
   username: Sequelize.STRING,
   facebookId: Sequelize.STRING,   // string bc facebookIds are larger than largest integer value allowed (2147483647 will be used for all FB ids otherwise)
-  // firstname: Sequelize.STRING,
-  // lastname: Sequelize.STRING,
+  firstname: Sequelize.STRING,
+  lastname: Sequelize.STRING,
   password: Sequelize.STRING,
   salt: Sequelize.STRING,
   desired: Sequelize.STRING,
@@ -36,14 +39,14 @@ User
       }
     });
 
-//make example user
 // User
 //   .create({
-//     username: 'roberto',
-//     firstname: 'robert',
-//     lastname: 'ing',
+//     username: 'aberrantmarble',
+//     firstname: 'aberrant',
+//     lastname: 'marble',
 //     password: 'password',
-//     desired: 'english'
+//     desired: 'english',
+//     native: 'english'
 //   })
 //   .complete(function(err, user) {
 //     if (!!err) {

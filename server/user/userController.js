@@ -1,3 +1,5 @@
+// User controller to sign in/up, log in/out users. Use bcrypt to hash/salt
+
 var Users = require('../../db/index');
 var bcrypt = require('bcrypt-nodejs');
 // var bodyParser = require('body-parser');
@@ -10,11 +12,11 @@ exports.signInUserForm = function(req, res) {
   res.redirect('../../client/signin.html');
 };
 
-// exports.logoutUser = function(req, res) {
-//   // req.session.destroy(function(){
-//     res.redirect('/login');
-//   // });
-// };
+exports.logoutUser = function(req, res) {
+  req.session.destroy(function(){
+    res.redirect('/login');
+  });
+};
 
 exports.signInUser = function(req, res) {
   var username = req.body.username;
