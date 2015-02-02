@@ -1,6 +1,6 @@
-angular.module('languageApp', [])
+angular.module('languageApp', ['googleTranslateModule'])
 
-.controller('selectLanguageController', function($scope, $http) {
+.controller('selectLanguageController', function($scope, $http, Translate) {
   $scope.languages = ['english','chinese','spanish','french','italian'];
   $scope.language = {};
 
@@ -32,8 +32,14 @@ angular.module('languageApp', [])
 
       $scope.comm.on('data', function(options) {
         $scope.$apply(function(){
-          $scope.convo += 'You: ' + options.data + '\n';
-          $scope.scrollBottom();
+          Translate.translateMsg(options.data, $scope.language.native, $scope.language.desired)
+          .then(function(translatedMsg){
+            console.log(translatedMsg);
+            var translatedText = translatedMsg.data.translations[0].translatedText
+            $scope.convo += 'You: ' + options.data + '\n';
+            $scope.convo += 'You (translated): ' + translatedText + '\n';
+            $scope.scrollBottom();
+          })
         });
       })
 
