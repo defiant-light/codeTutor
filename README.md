@@ -29,13 +29,13 @@ The most up-to-date documentation on product functionality and technical archite
 
 Prerequisites: You must have Node.js, Bower, and MySQL installed.
 
-To get up and running on your local development machine:
-1. Fork the repo
-1. Run bower install
-1. Run npm install
-1. Start your node server
-1. Start your mySql server
-1. Goto <http://localhost:3000>
+To get up and running on your local development machine:  
+1. Fork the repo  
+1. Run bower install  
+1. Run npm install  
+1. Start your node server  
+1. Start your mySql server  
+1. Goto <http://localhost:3000>  
 
 ## Contributing Guidelines
 
