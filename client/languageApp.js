@@ -27,7 +27,7 @@ angular.module('languageApp', ['googleTranslateModule', 'ngFx'])
       });
 
       $scope.comm.on('connected', function(options) {
-        document.body.insertBefore(options.video, document.getElementById('chatApp'));
+        document.getElementById('videos').insertBefore(options.video, document.getElementById('myVideo'));
         $scope.$apply(function() { 
           $scope.showChatApp = true; 
         });

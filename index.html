@@ -53,24 +53,23 @@
        
         <br>
       
-        <div ng-switch="state.stage">
-          <div ng-switch-when="a" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
+          <div ng-if="!language.desired"class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
             <h2> I want to speak...  </h2>
-            <a ng-repeat="lang in languages"  href="#" ng-click="language.native=lang[0]; state.stage='b';" class="list-group-item">
+            <a ng-repeat="lang in languages"  href="#" ng-click="language.native=lang[0]" class="list-group-item">
               <span class="flag-icon flag-icon-{{ lang[1] }}"></span>
               {{ lang[0] }}
               <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
             </a>
           </div>
-          <div ng-switch-when="b" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
+          <div ng-if="language.native && !language.desired" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
             <h2> My native language is...  </h2>
-            <a ng-repeat="lang in languages"  href="#" ng-click="language.desired=lang[0]; state.stage='c'; submitLanguages(language);" class="list-group-item">
+            <a ng-repeat="lang in languages"  href="#" ng-click="language.desired=lang[0]; submitLanguages(language);" class="list-group-item">
               <span class="flag-icon flag-icon-{{ lang[1] }}"></span>
               {{ lang[0] }}
               <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
             </a>
           </div>
-          <div ng-switch-when="c" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
+          <div id="videos" ng-if="language.desired" class="list-group fx-fade-left fx-speed-500 fx-easing-back">
             <div id='myVideo'>
               <video id='localVideo' autoplay></video>
             </div>

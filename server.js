@@ -75,6 +75,20 @@ app.get('/api/getroom', function(request, response) {
   }
 });
 
+app.get('/api/position', function(req, res) {
+  var room = req.query.room;
+  var native = req.query.native;
+  var desired = req.query.desired;
+  
+
+  // response.s 
+
+
+  var room = req.query.room;
+  // for(var i = 0;)
+
+});
+
 app.get('/signup', User.signUpUserForm);
 app.post('/signup', User.signUpUser);
 
