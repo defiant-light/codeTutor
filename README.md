@@ -11,12 +11,12 @@ Visit the Language Exchange at:
 
 ## Latest Version
 
-The latest version can be found here:  
+The latest version of the Language Exchange codebase can be found here:  
 <https://github.com/Aberrant-Marble/Aberrant-Marble>
 
 ## Documents
 
-The most up-to-date documentation on product functionality and technical architecture can be found at:  
+For the most up-to-date documentation on product functionality and technical architecture goto:  
 <https://github.com/Aberrant-Marble/Aberrant-Marble/tree/master/docs>
 
 ## Installation instructions
@@ -25,11 +25,11 @@ Prerequisites: You must have Node.js, Bower, and MySQL installed.
 
 To get up and running on your local development machine:  
 1. Fork the repo  
-1. Run bower install  
-1. Run npm install  
-1. Start your node server  
-1. Start your mySql server  
-1. Goto <http://localhost:3000>  
+2. Run bower install  
+3. Run npm install  
+4. Start your node server  
+5. Start your mySql server  
+6. Goto <http://localhost:3000>  
 
 ## Contributing Guidelines
 
