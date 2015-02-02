@@ -2,11 +2,21 @@
 
 var Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('languageapp', 'aberrantmarble', 'hr23greenfield', {
-  host: process.env.languageappdb || 'localhost',
-  port: process.env.languageappdbport || 3306,
+var host = 'localhost';
+var port = 3306;
+
+
+//dev vs prod credentials
+if (process.env.languageappdb) {
+  var sequelize = new Sequelize('languageapp', 'aberrantmarble', 'hr23greenfield', {
+    host: process.env.languageappdb,
+    port: process.env.languageappdbport,
+    dialect: 'mysql',
+  });  
+} else { var sequelize = new Sequelize('languageapp', 'root', '', {
   dialect: 'mysql',
 });
+}
 
 sequelize
   .authenticate()
