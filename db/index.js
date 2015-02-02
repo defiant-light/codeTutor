@@ -3,7 +3,7 @@
 var Sequelize = require('sequelize');
 
 var sequelize = new Sequelize('languageapp', 'aberrantmarble', 'hr23greenfield', {
-  host: process.env.languageappdb || 'http://localhost',
+  host: process.env.languageappdb || 'localhost',
   port: process.env.languageappdbport || 3306,
   dialect: 'mysql',
 });

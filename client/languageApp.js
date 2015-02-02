@@ -1,12 +1,15 @@
-angular.module('languageApp', ['googleTranslateModule'])
+angular.module('languageApp', ['googleTranslateModule', 'ngFx'])
 
 .controller('selectLanguageController', function($scope, $http, Translate) {
-  $scope.languages = ['english','chinese','spanish','french','italian'];
+  $scope.languages = [['English','us'],['Chinese','cn'],['Spanish','es'],['French','fr'],['Italian','it']];
   $scope.language = {};
 
   $scope.showChatApp = false;
   $scope.msg = '';
   $scope.convo = '';
+  $scope.state = {
+    stage: 'a',
+  };
 
   $scope.submitLanguages = function(languageSelections){
     return $http({
