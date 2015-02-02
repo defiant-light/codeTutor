@@ -3,11 +3,11 @@ angular.module('googleTranslateModule', [])
 .factory('Translate', function($http){
 
   var languageDict = {
-    english: 'en',
-    chinese: 'zh-CN',
-    spanish: 'es',
-    french: 'fr',
-    italian: 'it'
+    English: 'en',
+    Chinese: 'zh-CN',
+    Spanish: 'es',
+    French: 'fr',
+    Italian: 'it'
   };
 
   var translateMsg = function(msg, targetLang, sourceLang){
