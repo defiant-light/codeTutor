@@ -31,6 +31,8 @@ To get up and running on your local development machine:
 5. Start your mySql server  
 6. Goto <http://localhost:3000>  
 
+Additionally, start a server by running `gulp serve` and then run `gulp` to continually compile files and refresh the browser.
+
 ## Contributing Guidelines
 
 If you would like to make a contribution, please see the contribution guide for the git workflow.  
