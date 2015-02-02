@@ -18,21 +18,9 @@ var miscCSS = gulp.src(['./bower_components/bootstrap/dist/css/bootstrap.min.css
   .pipe(concat('bower.css'))
   .pipe(gulp.dest('./build'));
 
-// gulp.task('index', function () {
-//   var target = gulp.src('./index.html');
-//   // It's not necessary to read the files (will speed up things), we're only after their paths: 
-//   var sources = gulp.src(['./build/**/*.js', './build/**/*.css'], {read: false});
- 
-//   return target.pipe(inject(sources))
-//     .pipe(gulp.dest('./'));
-// });
-// concatenate and minify app sources
 var appStream = gulp.src(paths.scripts)
   .pipe(concat('app.js'))
-  // .pipe(rename({suffix: '.min'}))
-  // .pipe(uglify())
   .pipe(gulp.dest('./build'));
-
 
 // Concatenate vendor scripts 
 var vendor = gulp.src([
@@ -51,16 +39,7 @@ gulp.task('scripts', function() {
 
 var paths = {
   scripts: ['client/**/*.js']
-
 };
-gulp.task('scripts', function() {
-  return gulp.src(paths.scripts)
-    .pipe(jshint())
-    .pipe(concat('main.js'))
-      .pipe(rename({suffix: '.min'}))
-      .pipe(uglify())
-      .pipe(gulp.dest('build/js'));
-});
 
 gulp.task('browser-sync', function() {
   browserSync({
@@ -71,7 +50,6 @@ gulp.task('browser-sync', function() {
 gulp.task('serve', function () {
   nodemon({ script: 'server.js', ignore: ['node_modules/**/*.js'] });
 });
-
 
 gulp.task('default', ['scripts', 'browser-sync'], function() {
   gulp.watch(paths.scripts, ['scripts', browserSync.reload]);
