@@ -5,23 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
-  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"> -->
-  <link href="bower_components/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
-  <link href="client/styles.css" rel="stylesheet">
+    <!-- inject:css -->
+  <link rel="stylesheet" href="/client/css/bower.css">
+  <!-- endinject -->
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>  
- <!-- <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1..0/angular.min.js"></script> -->
- <script src="bower_components/angular/angular.min.js"></script>  
-  <script type='text/javascript' src='client/googleTranslate.js'></script>
-   <!-- <script type='text/javascript' src="bower_components/angular-animate/angular-animate.js"></script> -->
-  <script type='text/javascript' src="bower_components/ngFx/dist/ngFx.min.js"></script>
   <script type='text/javascript' src='http://cdn.icecomm.io/icecomm.js'></script>
-  <script type='text/javascript' src='client/languageApp.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- inject:js -->
+  <script src="/client/js/vendors.js"></script>
+  <script src="/client/js/app.js"></script>
+  <!-- endinject -->
 </head>
 <body ng-controller='selectLanguageController'>
 
@@ -34,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">LanguageBuddy</a>
+          <a class="navbar-brand" href="#">Language Exchange</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -46,40 +39,42 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-      <div class="container">
+      <div ng-if="!language.desired" class="container">
         <h1>Talk French with a Frenchman.</h1>
-        <p>LanguageBuddy instantly connects you with other language learners so you can practice together.<br>
+        <p>Language Exchange instantly connects you with other language learners so you can practice together.<br>
           Trade your English conversation for their French.</p>
        
         <br>
       
-          <div ng-if="!language.desired"class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
-            <h2> I want to speak...  </h2>
-            <a ng-repeat="lang in languages"  href="#" ng-click="language.native=lang[0]" class="list-group-item">
-              <span class="flag-icon flag-icon-{{ lang[1] }}"></span>
-              {{ lang[0] }}
-              <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
-            </a>
-          </div>
-          <div ng-if="language.native && !language.desired" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
-            <h2> My native language is...  </h2>
-            <a ng-repeat="lang in languages"  href="#" ng-click="language.desired=lang[0]; submitLanguages(language);" class="list-group-item">
-              <span class="flag-icon flag-icon-{{ lang[1] }}"></span>
-              {{ lang[0] }}
-              <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
-            </a>
-          </div>
-          <div id="videos" ng-if="language.desired" class="list-group fx-fade-left fx-speed-500 fx-easing-back">
-            <div id='myVideo'>
-              <video id='localVideo' autoplay></video>
-            </div>
-            <div id='chatApp' ng-show='showChatApp'>
-              <textarea id='chatBox' style='width: 250px; height: 100px;resize: none' readonly ng-model='convo'></textarea><br>
-              <input id='chatMsg' type='text' style='width: 250px' ng-keypress='handleKeyPress($event)' ng-model='msg'>
-              <input type='button' value='send' ng-click='sendMsg()'>
-            </div> 
+        <div ng-if="!language.desired"class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
+          <h2> I want to practice...  </h2>
+          <a ng-repeat="lang in languages"  href="#" ng-click="language.native=lang[0]" class="list-group-item">
+            <span class="flag-icon flag-icon-{{ lang[1] }}"></span>
+            {{ lang[0] }}
+            <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
+          </a>
+        </div>
+        <div ng-if="language.native && !language.desired" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
+          <h2> My native language is...  </h2>
+          <a ng-repeat="lang in languages"  href="#" ng-click="language.desired=lang[0]; submitLanguages(language);" class="list-group-item">
+            <span class="flag-icon flag-icon-{{ lang[1] }}"></span>
+            {{ lang[0] }}
+            <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
+          </a>
+        </div>
+      </div>
+
+      <div ng-show="language.desired" class="container">
+        <div id="videos">
+          <div id='myVideo'>
+            <video id='localVideo' autoplay></video>
           </div>
         </div>
+        <div id='chatApp' ng-show='showChatApp'>
+          <textarea id='chatBox' style='width: 250px; height: 100px;resize: none' readonly ng-model='convo'></textarea><br>
+          <input id='chatMsg' type='text' style='width: 250px' ng-keypress='handleKeyPress($event)' ng-model='msg'>
+          <input type='button' value='send' ng-click='sendMsg()'>
+        </div> 
       </div>
     </div>
 
@@ -87,7 +82,7 @@
       <hr>
 
       <footer>
-        <p>&copy; LanguageBuddy, Inc. 2014</p>
+        <p>&copy; Language Exchange, Inc. 2014</p>
       </footer>
     </div> <!-- /container -->
 </body>
