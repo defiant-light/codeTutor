@@ -8,9 +8,11 @@ var gulp = require('gulp');
     series = require('stream-series');
     inject = require("gulp-inject");
     karma = require('karma').server;
+    watch = require('gulp-watch');
 
 var paths = {
-  scripts: ['client/**/*.js']
+  scripts: 'client/*.js',
+  css: 'client/*.css',
 };
 
 var miscCSS = gulp.src(['./bower_components/bootstrap/dist/css/bootstrap.min.css',
@@ -38,10 +40,6 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('./'));
 });
 
-var paths = {
-  scripts: ['client/**/*.js']
-};
-
 gulp.task('browser-sync', function() {
   browserSync({
     proxy: "http://localhost:3000"
@@ -63,3 +61,8 @@ gulp.task('test', function(done) {
 gulp.task('default', ['scripts', 'browser-sync', 'test'], function() {
   gulp.watch(paths.scripts, ['scripts', browserSync.reload]);
 });
+
+/*gulp.task('default', ['scripts'], function () {
+  return gulp.watch(paths.scripts);
+      //.pipe(gulp.dest('./build'));
+});*/

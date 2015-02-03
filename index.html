@@ -39,10 +39,12 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-      <div ng-if="!language.desired" class="container">
-        <h1>Talk French with a Frenchman.</h1>
-        <p>Language Exchange instantly connects you with other language learners so you can practice together.<br>
+      <div class="container">
+        <h1 ng-if="!language.desired">Talk French with a Frenchman.</h1>
+        <p ng-if="!language.desired">Language Exchange instantly connects you with other language learners so you can practice together.<br>
           Trade your English conversation for their French.</p>
+          
+        <p ng-if="language.desired">What do you like to do with your free time?</p>
        
         <br>
       
@@ -62,20 +64,24 @@
             <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
           </a>
         </div>
-      </div>
 
-      <div ng-show="language.desired" class="container">
-        <div id="videos">
-          <div id='myVideo'>
+        <div id="videos" ng-show="language.desired">
+          <div id='myVideo' class="inline">
             <video id='localVideo' autoplay></video>
           </div>
         </div>
-        <div id='chatApp' ng-show='showChatApp'>
-          <textarea id='chatBox' style='width: 250px; height: 100px;resize: none' readonly ng-model='convo'></textarea><br>
-          <input id='chatMsg' type='text' style='width: 250px' ng-keypress='handleKeyPress($event)' ng-model='msg'>
-          <input type='button' value='send' ng-click='sendMsg()'>
-        </div> 
+
+        <br>
+
+        <form class="form-horizontal" id='chatApp' ng-show='showChatApp'>
+          <div class="form-group">
+            <textarea class="form-control" id='chatBox' readonly ng-model='convo'></textarea><br>
+            <input class="form-control inline" id='chatMsg' type='text' ng-keypress='handleKeyPress($event)' ng-model='msg'>
+            <button class="btn btn-primary inline" ng-click='sendMsg()'>Send</button>
+          </div>
+        </form>
       </div>
+
     </div>
 
     <div class="container">

@@ -7,9 +7,7 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
   $scope.showChatApp = false;
   $scope.msg = '';
   $scope.convo = '';
-  $scope.state = {
-    stage: 'a',
-  };
+  $scope.waiting=false;
 
   $scope.submitLanguages = function(languageSelections){
     return $http({
@@ -24,14 +22,15 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
 
       // Show video of the user
       $scope.comm.on('local', function(options) {
-        localVideo.src = options.stream;
+        console.log(options.stream);
+        $('#localVideo').attr("src", options.stream);
       });
 
       // When two people are connected, display the video of the language partner
       // and show the chat app
       $scope.comm.on('connected', function(options) {
-        var foreignVidDiv = $('<div></div>');
-        foreignVidDiv.append(options.video);
+        var foreignVidDiv = $('<div class="inline"></div>');
+        foreignVidDiv.append(options.video)
         foreignVidDiv.children().addClass('foreignVideo');
         $('#videos').prepend(foreignVidDiv);
         // document.getElementById('videos').insertBefore(document.createElement("$BUTTON")options.video, document.getElementById('myVideo'));
@@ -49,8 +48,8 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
           .then(function(translatedMsg){
             console.log(translatedMsg);
             var translatedText = translatedMsg.data.translations[0].translatedText
-            $scope.convo += 'You: ' + options.data + '\n';
-            $scope.convo += 'You (translated): ' + translatedText + '\n';
+            $scope.convo += 'Them: ' + options.data + '\n';
+            $scope.convo += 'Them (translated): ' + translatedText + '\n';
             $scope.scrollBottom();
           })
         });
@@ -71,7 +70,7 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
   $scope.sendMsg = function(){
     if($scope.msg.trim() !== '') {
       $scope.comm.send($scope.msg);
-      $scope.convo += 'Me: ' + $scope.msg + '\n';
+      $scope.convo += 'You: ' + $scope.msg + '\n';
       $scope.msg = ''
       $scope.scrollBottom();
       document.getElementById('chatMsg').focus();
