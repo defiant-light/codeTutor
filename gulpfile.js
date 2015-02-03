@@ -7,6 +7,7 @@ var gulp = require('gulp');
     browserSync = require('browser-sync');
     series = require('stream-series');
     inject = require("gulp-inject");
+    karma = require('karma').server;
 
 var paths = {
   scripts: ['client/**/*.js']
@@ -51,6 +52,14 @@ gulp.task('serve', function () {
   nodemon({ script: 'server.js', ignore: ['node_modules/**/*.js'] });
 });
 
-gulp.task('default', ['scripts', 'browser-sync'], function() {
+gulp.task('test', function(done) {
+  karma.start({
+    configFile: __dirname + '/my.conf.js',
+    singleRun: true
+  }, function() { done();
+  });
+});
+
+gulp.task('default', ['scripts', 'browser-sync', 'test'], function() {
   gulp.watch(paths.scripts, ['scripts', browserSync.reload]);
 });
