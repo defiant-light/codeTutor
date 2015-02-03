@@ -32,6 +32,8 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><button type="button" class="btn btn-success navbar-btn">Sign in</button></li>
+            <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+            <li><button type="button" class="btn btn-success navbar-btn">Sign up</button></li>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
@@ -40,11 +42,14 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1 ng-if="!language.desired">Talk French with a Frenchman.</h1>
-        <p ng-if="!language.desired">Language Exchange instantly connects you with other language learners so you can practice together.<br>
+        <div ng-if="!showChatApp">
+        <h1>Talk French with a Frenchman.</h1>
+        <p >Language Exchange instantly connects you with other language learners so you can practice together.<br>
           Trade your English conversation for their French.</p>
-          
-        <p ng-if="language.desired">What do you like to do with your free time?</p>
+        </div>
+        <div ng-if="showChatApp" class="fx-fade-up fx-speed-500 fx-easing-back">
+          <h2> Topic: How did you spend your last vacation? </h1>
+        </div>
        
         <br>
       
