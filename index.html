@@ -27,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Language Exchange</a>
+          <a class="navbar-brand" href="#">codeTutor</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -43,9 +43,9 @@
     <div class="jumbotron">
       <div class="container">
         <div ng-if="!showChatApp">
-        <h1>Talk French with a Frenchman.</h1>
-        <p>Language Exchange instantly connects you with other language learners so you can practice together.<br>
-           Trade langauges. Trade stories.</p>
+        <h1>Learn Better Together</h1>
+        <p>codeTutor instantly connects you with other students, learning what you're learning so you can help each other through the tough spots.<br>
+           Trade tricks. Trade stories. Learn more better.</p>
         </div>
         <div ng-if="showChatApp" class="fx-fade-up fx-speed-500 fx-easing-back">
           <h2> Topic: How did you spend your last vacation? </h1>
@@ -62,7 +62,7 @@
           </a>
         </div>
         <div ng-if="language.desired && !language.native" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
-          <h2> My native language is...  </h2>
+          <h2> My skill level is...  </h2>
           <a ng-repeat="lang in languages"  href="#" ng-click="language.native=lang[0]; submitLanguages(language);" class="list-group-item">
             <span class="flag-icon flag-icon-{{ lang[1] }}"></span>
             {{ lang[0] }}
