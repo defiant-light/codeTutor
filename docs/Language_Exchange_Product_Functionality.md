@@ -1,11 +1,12 @@
 # Language Exchange Product Functionality
 
 ## Matching Users
-The Language Exchange allows users to select their:  
+The Language Exchange looks to match users based on their native language and foreign language (language they want to learn).
+Users will select their:  
 1. Native Language  
-2. Foreign Language (language they want to learn)  
+2. Foreign Language 
 
-Users with the exact opposite Native and Foreign languages will be matched up and connected with each other. For example:
+Users with the exact opposite Native and Foreign languages will be connected with each other. For example:
 
 Jing:
 * Native Language - Chinese
@@ -19,7 +20,7 @@ Jacque:
 * Native Language - French
 * Foreign Language - Chinese
 
-In this scenario, Jing and Joe will be matched and connected while Jacque would not be matched with either Jing or Joe.
+In this scenario, Jing (speaks Chinese, wants to learn English) and Joe (speaks English, wants to learn Chinese) will be connected. Jacque would not be connected with either Jing or Joe.
 
 ## User Interaction
 
