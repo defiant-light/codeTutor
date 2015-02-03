@@ -1530,9 +1530,31 @@ body {
   float:right;
 }
 
-.left {
+.left { 
   float:left;
 }
+
+.inline {
+  display: inline;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#chatBox {
+  padding-left: 15px;
+  height: 200px;
+  width: 800px;
+}
+
+#chatMsg {
+  padding-left: 15px;
+  width: 600px;
+}
+
 
 #localVideo {
   width: 160px;
