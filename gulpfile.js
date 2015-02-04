@@ -28,6 +28,7 @@ var appStream = gulp.src(paths.scripts)
 // Concatenate vendor scripts 
 var vendor = gulp.src([
     './bower_components/angular/angular.js',
+    './bower_components/angular-ui-router/release/angular-ui-router.min.js',
     './bower_components/ngFx/dist/ngFx.min.js',
     './bower_components/bootstrap/dist/js/bootstrap.min.js'
     ])
