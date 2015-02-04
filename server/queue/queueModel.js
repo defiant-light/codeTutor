@@ -1,17 +1,16 @@
-module.exports = Queue = function(native, foreign) {
+module.exports = Queue = function(subject, level) {
 
-  this.languages = {};
-  this.languages.native = native;
-  this.languages.foreign = foreign;
+  this.subject = subject;
+  this.level = level;
   this.storage = [];
 };
 
-Queue.stringify = function(native,foreign) {
-  return JSON.stringify([native,foreign]);
+Queue.stringify = function(subject, level) {
+  return JSON.stringify([subject, level ]);
 };
 
 Queue.prototype.stringify = function() {
-  return Queue.stringify(this.languages.native,this.languages.foreign);
+  return Queue.stringify(this.subject, this.level);
 };
 
 Queue.prototype.length = function() {

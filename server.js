@@ -51,26 +51,21 @@ app.get('/', function(request, response) {
 app.get('/api/getroom', function(request, response) {
 
 
-  var nativeLanguage = request.query.native;
-  var desiredLanguage = request.query.desired;
-  var requireNative = (request.query.requireNative === "true");
+  var subject = request.query.subject;
+  var level = request.query.level;
 
-  console.log(nativeLanguage,desiredLanguage);
+  console.log(subject,level);
 
-  var nonNativePartners = queues[Queue.stringify(nativeLanguage,desiredLanguage)];
-  var nativePartners = queues[Queue.stringify(desiredLanguage,nativeLanguage)];
+  var potentialMatches = queues[Queue.stringify(subject,level)];
   var partnerRoom = null;
-  if (!requireNative && nonNativePartners.length() > 0) {
-    partnerRoom = nonNativePartners.shift();
-    response.status(200).send(partnerRoom);
-  } else if (nativePartners.length() > 0) {
-    partnerRoom = nativePartners.shift();
+  if (potentialMatches.length() > 0) {
+    partnerRoom = potentialMatches.shift();
     response.status(200).send(partnerRoom);
   } else {
     console.log('new room');
     var newRoom = crypto.pseudoRandomBytes(256).toString('base64');
     console.log(newRoom);
-    queues[Queue.stringify(nativeLanguage,desiredLanguage)].push(newRoom);
+    queues[Queue.stringify(subject,level)].push(newRoom);
     response.status(200).send(newRoom);
   }
 });
@@ -78,10 +73,7 @@ app.get('/api/getroom', function(request, response) {
 app.get('/api/position', function(req, res) {
   var room = req.query.room;
 
-  
-
   // response.s 
-
 
   var room = req.query.room;
   // for(var i = 0;)
