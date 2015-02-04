@@ -1,7 +1,5 @@
-
-
 {
-  "name": "Code Tutor",
+  "name": "CodeTutor",
   "version": "0.0.1",
   "main": "server.js",
   "description": "Get subject help, whenever!",
