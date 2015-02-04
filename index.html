@@ -39,20 +39,20 @@
       </div>
     </nav>
 
+        <div id="videos" ng-show="language.level">
+          <div id='myVideo' class="inline">
+            <video id='localVideo' autoplay></video>
+          </div>
+        </div>
+
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <div ng-if="!showChatApp">
+        <div ng-if="!showingVideo">
         <h1>Learn Better Together</h1>
         <p>codeTutor instantly connects you with other students, learning what you're learning so you can help each other through the tough spots.<br>
            Trade tricks. Trade stories. Learn more better.</p>
         </div>
-        <div ng-if="showChatApp" class="fx-fade-up fx-speed-500 fx-easing-back">
-          <h2> Topic: How did you spend your last vacation? </h1>
-        </div>
-       
-        <br>
-      
         <div ng-if="!language.level"class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
           <h2> I want to practice...  </h2>
           <a ng-repeat="lang in languages"  href="#" ng-click="language.subject=lang[0]" class="list-group-item">
@@ -68,12 +68,6 @@
             {{ level[0] }}
             <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
           </a>
-        </div>
-
-        <div id="videos" ng-show="language.level">
-          <div id='myVideo' class="inline">
-            <video id='localVideo' autoplay></video>
-          </div>
         </div>
 
         <br>
