@@ -1,21 +1,23 @@
+
+
 {
-  "name": "Aberrant-Marble",
+  "name": "Code Tutor",
   "version": "0.0.1",
   "main": "server.js",
-  "description": "Language learning whenever you want!",
+  "description": "Get subject help, whenever!",
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Aberrant-Marble/Aberrant-Marble"
+    "url": "https://github.com/defiant-light/codeTutor"
   },
-  "author": "Eric Schmidt, Yondy Kang, Robert Ing",
+  "author": "Eric Benson, Luke Davis, Todd Skinner, Arun Suresh",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Aberrant-Marble/Aberrant-Marble/issues"
   },
-  "homepage": "https://github.com/Aberrant-Marble/Aberrant-Marble",
+  "homepage": "https://github.com/defiant-light/codeTutor",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.10.2",
@@ -25,7 +27,7 @@
     "passport": "^0.2.1",
     "passport-facebook": "^1.0.3",
     "sequelize": "^2.0.0-rc8",
-    "sequelize-cli": "^1.0.6",
+    "sequelize-cli": "^1.0.6"
   },
   "devDependencies": {
     "browser-sync": "^2.0.0-rc4",
@@ -46,3 +48,5 @@
     "stream-series": "^0.1.1"
   }
 }
+
+

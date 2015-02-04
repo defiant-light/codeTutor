@@ -52,9 +52,9 @@
         </div>
        
         <br>
-      
+
         <div ng-if="!language.level"class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
-          <h2> I want to practice...  </h2>
+          <h2> I need help with...  </h2>
           <a ng-repeat="lang in languages"  href="#" ng-click="language.subject=lang[0]" class="list-group-item">
             <span class="flag-icon flag-icon-{{ lang[1] }}"></span>
             {{ lang[0] }}
@@ -74,6 +74,8 @@
           <div id='myVideo' class="inline">
             <video id='localVideo' autoplay></video>
           </div>
+          <br>
+          <button ng-click="disconnect()">Disconnect</button>
         </div>
 
         <br>

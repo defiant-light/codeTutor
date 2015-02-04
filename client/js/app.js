@@ -11,8 +11,12 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
   $scope.convo = '';
   $scope.waiting=false;
 
+  $scope.disconnect = function(){
+    console.log('disconecting');
+    $scope.comm.close();
+  }
+
   $scope.submitLanguages = function(languageSelections){
-    console.log(languageSelections);
     return $http({
       method: 'GET',
       url: '/api/getroom',
@@ -25,7 +29,6 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
 
       // Show video of the user
       $scope.comm.on('local', function(options) {
-        console.log(options.stream);
         $('#localVideo').attr("src", options.stream);
       });
 
@@ -67,6 +70,7 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
       });
     })
   }
+
 
   // Function to send a message to the language partner
   // and display the sent message in the chatbox
