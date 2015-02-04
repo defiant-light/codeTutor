@@ -87,7 +87,7 @@ app.post('/signup', User.signUpUser);
 app.get('/signin', User.signInUserForm);
 app.post('/signin', User.signInUser);
 
-app.get('/logout', User.logout);
+app.get('/logout', User.logoutUser);
 app.post('/logout', User.signInUser);
 
 //Passport facebook auth
