@@ -59,16 +59,26 @@
         <div ng-if="!language.level"class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
           <h2> I want to practice...  </h2>
           <a ng-repeat="lang in languages"  href="#" ng-click="language.subject=lang[0]" class="list-group-item">
-            <span class="flag-icon flag-icon-{{ lang[1] }}"></span>
+            <!--- <span class="flag-icon flag-icon-{{ lang[1] }}"></span> --->
             {{ lang[0] }}
             <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
           </a>
         </div>
+        
         <div ng-if="language.subject && !language.level" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
           <h2> My skill level is...  </h2>
-          <a ng-repeat="level in levels"  href="#" ng-click="language.level=level[1]; submitLanguages(language);" class="list-group-item">
-            <span class="flag-icon flag-icon-{{ level[1] }}"></span>
+          <a ng-repeat="level in levels"  href="#" ng-click="language.level=level[1]" class="list-group-item">
+            <!--- <span class="flag-icon flag-icon-{{ level[1] }}"></span> --->
             {{ level[0] }}
+            <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div ng-if="language.subject && language.level && !language.estimate" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
+          <h2> I expect that my problem will take...  </h2>
+          <a ng-repeat="estimate in estimates"  href="#" ng-click="language.estimate=estimate[1]; submitLanguages(language);" class="list-group-item">
+            <!--- <span class="flag-icon flag-icon-{{ estimate[1] }}"></span> --->
+            {{ estimate[0] }}
             <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
           </a>
         </div>
