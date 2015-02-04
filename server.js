@@ -57,6 +57,7 @@ app.get('/api/getroom', function(request, response) {
   console.log(subject,level);
 
   var potentialMatches = queues[Queue.stringify(subject,level)];
+  console.log(Queue.stringify(subject, level));
   var partnerRoom = null;
   if (potentialMatches.length() > 0) {
     partnerRoom = potentialMatches.shift();
