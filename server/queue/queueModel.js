@@ -1,7 +1,8 @@
-module.exports = Queue = function(subject, level) {
+module.exports = Queue = function(subject, level, estimate) {
 
   this.subject = subject;
   this.level = level;
+  this.estimate = estimate;
   this.storage = [];
 };
 
