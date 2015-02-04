@@ -13,7 +13,7 @@ if (process.env.languageappdb) {
     port: process.env.languageappdbport,
     dialect: 'mysql',
   });  
-} else { var sequelize = new Sequelize('languageapp', 'root', '', {
+} else { var sequelize = new Sequelize('language', 'root', '', {
   dialect: 'mysql',
 });
 }
