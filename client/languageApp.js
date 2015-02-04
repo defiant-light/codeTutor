@@ -12,6 +12,7 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
   $scope.waiting=false;
 
   $scope.submitLanguages = function(languageSelections){
+    console.log(languageSelections);
     return $http({
       method: 'GET',
       url: '/api/getroom',
