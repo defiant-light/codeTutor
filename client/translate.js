@@ -34,7 +34,10 @@ angular.module('translateModule', [])
     })
   }
 
-  return {
+  return {};
+  /* progenitor code
+  {
     translateMsg: translateMsg
   };
+  */
 })
