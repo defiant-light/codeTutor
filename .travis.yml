@@ -9,7 +9,7 @@ deploy:
   region: us-west-1
   app: codeTutor
   env: e-mag9beqagb
-  bucket_name: elasticbeanstalk-us-west-1-704220101114
+  bucket_name: codetutor
   access_key_id: AKIAIRY6GOKTUCR75QZQ
   secret-access-key:
     secure: TdHpyY1mJRx9wdujpAozBo21QObNDh2A9QjA0gRg6y9ig0eS74YZwgmIpjFUJ4xT1qfciPTzhxmHyBbT8AVyRk5j4WCd64B6rBSeIrSWygxSkcGmPMNQY02y22wqOGS+Y+FYJXThDZp17WyNaStF/zfozgIZHqxa3vt4aYIprjk=
