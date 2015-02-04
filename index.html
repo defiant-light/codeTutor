@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html ng-app='codeTutorApp'>
+<html ng-app='mainApp'>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,118 +17,11 @@
   <script src="/client/js/app.js"></script>
   <!-- endinject -->
 </head>
-<body ng-controller='selectSubjectController'>
-  <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '750262331736676',
-          xfbml      : true,
-          version    : 'v2.2'
-        });
-      };
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-   <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">codeTutor</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/signin">Sign in</a></li>
-            <!-- <li>&nbsp;&nbsp;&nbsp;&nbsp;</li> -->
-            <li><a href="/signup">Sign up</a></li>
-            <li><a href="/logout">Log Out</a></li>            
-            <!-- <li><button type="button" class="btn btn-success navbar-btn">Sign up</button></li> -->
-          </ul>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
+<body>
+  <div ui-view></div>
 
-        <div id="videos" ng-show="showingVideo">
-          <div id='myVideo' class="inline">
-            <video id='localVideo' autoplay></video>
-          </div>
-        </div>
+   <a ui-sref="state1">State 1</a>
+   <a ui-sref="state2">State 2</a>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <div ng-if="!showingVideo">
-        <h1>Learn Better Together</h1>
-        <p>codeTutor instantly connects you with other students, learning what you're learning so you can help each other through the tough spots.<br>
-           Trade tricks. Trade stories. Learn more better.</p>
-        </div>
-
-        <div ng-if="!language.level"class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
-          <h2> I need help with...  </h2>
-          <a ng-repeat="lang in languages"  href="#" ng-click="language.subject=lang[0]" class="list-group-item">
-            {{ lang[0] }}
-            <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
-          </a>
-        </div>
-        
-        <div ng-if="language.subject && !language.level" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
-          <h2> My skill level is...  </h2>
-          <a ng-repeat="level in levels"  href="#" ng-click="language.level=level[1]" class="list-group-item">
-            {{ level[0] }}
-            <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
-          </a>
-        </div>
-
-        <div id="videos" ng-show="language.level">
-          <div id='myVideo' class="inline">
-            <video id='localVideo' autoplay></video>
-          </div>
-          <br>
-          <button ng-click="disconnect()">Disconnect</button>
-        </div>
-
-        <div ng-if="language.subject && language.level && !language.estimate" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
-          <h2> I expect that my problem will take...  </h2>
-          <a ng-repeat="estimate in estimates"  href="#" ng-click="language.estimate=estimate[1]; submitLanguages(language);" class="list-group-item">
-            {{ estimate[0] }}
-            <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
-          </a>
-        </div>
-
-        <br>
-        <form class="form-horizontal" id='chatApp' ng-show='showChatApp'>
-          <div class="form-group">
-            <textarea class="form-control" id='chatBox' readonly ng-model='convo'></textarea><br>
-            <input class="form-control inline" id='chatMsg' type='text' ng-keypress='handleKeyPress($event)' ng-model='msg'>
-            <button class="btn btn-primary inline" ng-click='sendMsg()'>Send</button>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="container">
-      <hr>
-      <footer>
-      </footer>
-    </div> <!-- /container -->
-    <div class="container">
-      <hr>
-      <footer>
-        <p>&copy; codeTutor Inc. 2015</p>
-      </footer>
-    <div
-      class="fb-like"
-      data-share="true"
-      data-width="450"
-      data-show-faces="true">
-    </div>
 </body>
 </html>
