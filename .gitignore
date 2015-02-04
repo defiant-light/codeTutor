@@ -33,6 +33,7 @@ bower_components/
 rootkey.csv
 
 # Elastic Beanstalk Files
+.credentials
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml

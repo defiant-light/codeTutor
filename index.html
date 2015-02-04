@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html ng-app='languageApp'>
+<html ng-app='codeTutorApp'>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +17,7 @@
   <script src="/client/js/app.js"></script>
   <!-- endinject -->
 </head>
-<body ng-controller='selectLanguageController'>
+<body ng-controller='selectSubjectController'>
   <script>
       window.fbAsyncInit = function() {
         FB.init({
@@ -71,8 +71,9 @@
         <p>codeTutor instantly connects you with other students, learning what you're learning so you can help each other through the tough spots.<br>
            Trade tricks. Trade stories. Learn more better.</p>
         </div>
+
         <div ng-if="!language.level"class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
-          <h2> I want to practice...  </h2>
+          <h2> I need help with...  </h2>
           <a ng-repeat="lang in languages"  href="#" ng-click="language.subject=lang[0]" class="list-group-item">
             {{ lang[0] }}
             <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
@@ -86,6 +87,15 @@
             <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
           </a>
         </div>
+
+        <div id="videos" ng-show="language.level">
+          <div id='myVideo' class="inline">
+            <video id='localVideo' autoplay></video>
+          </div>
+          <br>
+          <button ng-click="disconnect()">Disconnect</button>
+        </div>
+
         <div ng-if="language.subject && language.level && !language.estimate" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
           <h2> I expect that my problem will take...  </h2>
           <a ng-repeat="estimate in estimates"  href="#" ng-click="language.estimate=estimate[1]; submitLanguages(language);" class="list-group-item">
@@ -93,6 +103,7 @@
             <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
           </a>
         </div>
+
         <br>
         <form class="form-horizontal" id='chatApp' ng-show='showChatApp'>
           <div class="form-group">
