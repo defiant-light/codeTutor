@@ -15,8 +15,8 @@ passport.deserializeUser(function(obj, done) {
 
 //move clientID and secret as to not expose credentials
 passport.use(new FacebookStrategy({
-    clientID: 632339323578963,
-    clientSecret: '3539c1560e204c8c307edf5649177903',
+    clientID: 1545918208991310,
+    clientSecret: '96563b6dd3550f03538db3b12621e8b5',
     callbackURL: "http://localhost:3000/auth/facebook/callback",
   },
   function(accessToken, refreshToken, profile, done) {
@@ -30,7 +30,9 @@ passport.use(new FacebookStrategy({
         } else {
           Users.create({ 
             username: profile.name.givenName + profile.name.familyName,
-            facebookId: profile.id
+            facebookId: profile.id,
+            firstname: profile.name.givenName,
+            lastname: profile.name.familyName
           });
           done(null, profile);
         }

@@ -7,6 +7,7 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
   $scope.language = {};
 
   $scope.showChatApp = false;
+  $scope.showingVideo = false;
   $scope.msg = '';
   $scope.convo = '';
   $scope.waiting=false;
@@ -17,6 +18,10 @@ angular.module('languageApp', ['translateModule', 'ngFx'])
   }
 
   $scope.submitLanguages = function(languageSelections){
+
+    console.log(languageSelections);
+    $scope.showingVideo=true;
+
     return $http({
       method: 'GET',
       url: '/api/getroom',
