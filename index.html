@@ -32,7 +32,12 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <!-- <li>&nbsp;&nbsp;&nbsp;&nbsp;</li> -->
-            <li><a href="/signin">Sign in</a></li>
+            <li><a ui-sref="signup">Sign Up</a></li>
+            <li><a ui-sref="signin">Sign In</a></li>
+            <li><a ui-sref="videochat">Video Chat</a></li>
+            <li><a ui-sref="selectsubject">Select a Subject</a></li>
+            <li><a ui-sref="ratepartner">Rate Your Last Partner</a></li>
+
             <!-- <li><button type="button" class="btn btn-success navbar-btn">Sign up</button></li> -->
           </ul>
         </div><!--/.navbar-collapse -->
@@ -40,8 +45,11 @@
     </nav>
   <div ui-view class='container'></div>
 
-   <a ui-sref="state1">State 1</a>
-   <a ui-sref="state2">State 2</a>
+    <div class="container">
+      <hr>
 
+      <footer>
+      </footer>
+    </div> <!-- /container -->
 </body>
 </html>

@@ -121,14 +121,27 @@ angular.module('mainApp',["ui.router"
     $urlRouterProvider.otherwise("/state1");
 
     $stateProvider
-			.state('state1', {
-        url:'/state1',
-        templateUrl: 'client/test.html'
+	    .state('signup', {
+        url:'/signup',
+        templateUrl: 'client/signup.html'
       })
-      .state('state2', {
-        url:'/state2', 
-        templateUrl: 'client/test2.html'
+      .state('signin', {
+        url:'/signin', 
+        templateUrl: 'client/signin.html'
       })
+			.state('videochat', {
+        url:'/videochat',
+        templateUrl: 'client/videoChat.html'
+      })
+      .state('selectsubject', {
+        url:'/selectsubject', 
+        templateUrl: 'client/selectSubject.html'
+      })
+			.state('ratepartner', {
+        url:'/ratepartner',
+        templateUrl: 'client/ratePartner.html'
+      })
+
 	});
 
 
