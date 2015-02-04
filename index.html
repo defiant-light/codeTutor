@@ -55,15 +55,15 @@
       
         <div ng-if="!language.native"class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
           <h2> I want to practice...  </h2>
-          <a ng-repeat="lang in languages"  href="#" ng-click="language.desired=lang[0]" class="list-group-item">
+          <a ng-repeat="lang in languages"  href="#" ng-click="language.subject=lang[0]" class="list-group-item">
             <span class="flag-icon flag-icon-{{ lang[1] }}"></span>
             {{ lang[0] }}
             <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
           </a>
         </div>
-        <div ng-if="language.desired && !language.native" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
+        <div ng-if="language.subject && !language.native" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
           <h2> My skill level is...  </h2>
-          <a ng-repeat="level in levels"  href="#" ng-click="language.native=level[1]; submitLanguages(language);" class="list-group-item">
+          <a ng-repeat="level in levels"  href="#" ng-click="language.level=level[1]; submitLanguages(language);" class="list-group-item">
             <span class="flag-icon flag-icon-{{ level[1] }}"></span>
             {{ level[0] }}
             <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>

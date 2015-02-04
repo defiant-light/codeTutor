@@ -1,23 +1,23 @@
-# Language Exchange
+#codeTutor
 
 ## What is it?
 
-The Language Exchange seeks to help people learn a foreign language by connecting them with a native speaker of the language they're learning. People are instantly connected with each other via video chat and instant messaging and can take turns practicing their foreign language.
+The codeTutor seeks to help people learn by connecting them with other students of the subject they're learning. People are instantly connected with each other via video chat and instant messaging and can help get each other un-stuck.
 
-The Language Exchange is an Angular webapp that uses icecomm.io (powered by WebRTC) for video chat and the Google Translate API for text chat.
+codeTutor is an Angular webapp that uses icecomm.io (powered by WebRTC) for video chat and a public ratings and reviews for peer-evaluations.
 
-Visit the Language Exchange at:  
+Visit the app at:  
 <http://amdev.elasticbeanstalk.com/>
 
 ## Latest Version
 
-The latest version of the Language Exchange codebase can be found here:  
-<https://github.com/Aberrant-Marble/Aberrant-Marble>
+The latest version of the codebase can be found here:  
+<https://github.com/defiant-light/codeTutor>
 
 ## Documents
 
 For the most up-to-date documentation on product functionality and technical architecture goto:  
-<https://github.com/Aberrant-Marble/Aberrant-Marble/tree/master/docs>
+<https://github.com/defiant-light/codeTutor/tree/master/docs>
 
 ## Installation instructions
 
@@ -36,7 +36,10 @@ Additionally, start a server by running `gulp serve` and then run `gulp` to cont
 ## Contributing Guidelines
 
 If you would like to make a contribution, please see the contribution guide for the git workflow.  
-<https://github.com/Aberrant-Marble/Aberrant-Marble/blob/master/CONTRIBUTING.md>
+<https://github.com/defiant-light/codeTutor/blob/master/CONTRIBUTING.md>
 
 For any bugs or issues, please create a new issue at:  
-<https://github.com/Aberrant-Marble/Aberrant-Marble/issues>
+<https://github.com/defiant-light/codeTutor/issues>
+
+# codeTutor
+
