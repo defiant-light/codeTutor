@@ -87,6 +87,8 @@ app.post('/signup', User.signUpUser);
 app.get('/signin', User.signInUserForm);
 app.post('/signin', User.signInUser);
 
+app.get('/logout', User.logout);
+app.post('/logout', User.signInUser);
 
 //Passport facebook auth
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_birthday', 'user_likes'] }));
