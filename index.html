@@ -56,12 +56,13 @@
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-
-        <div id="videos" ng-show="language.level">
+    <!-- maybe i should move this later -->
+        <div id="videos" ng-show="showingVideo">
           <div id='myVideo' class="inline">
             <video id='localVideo' autoplay></video>
           </div>
         </div>
+
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
@@ -75,7 +76,6 @@
         <div ng-if="!language.level"class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
           <h2> I need help with...  </h2>
           <a ng-repeat="lang in languages"  href="#" ng-click="language.subject=lang[0]" class="list-group-item">
-            <!--- <span class="flag-icon flag-icon-{{ lang[1] }}"></span> --->
             {{ lang[0] }}
             <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
           </a>
@@ -84,7 +84,6 @@
         <div ng-if="language.subject && !language.level" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
           <h2> My skill level is...  </h2>
           <a ng-repeat="level in levels"  href="#" ng-click="language.level=level[1]" class="list-group-item">
-            <!--- <span class="flag-icon flag-icon-{{ level[1] }}"></span> --->
             {{ level[0] }}
             <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
           </a>
@@ -101,7 +100,6 @@
         <div ng-if="language.subject && language.level && !language.estimate" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
           <h2> I expect that my problem will take...  </h2>
           <a ng-repeat="estimate in estimates"  href="#" ng-click="language.estimate=estimate[1]; submitLanguages(language);" class="list-group-item">
-            <!--- <span class="flag-icon flag-icon-{{ estimate[1] }}"></span> --->
             {{ estimate[0] }}
             <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
           </a>
@@ -122,6 +120,11 @@
       <footer>
       </footer>
     </div> <!-- /container -->
+    <div class="container">
+      <hr>
+      <footer>
+        <p>&copy; codeTutor Inc. 2015</p>
+      </footer>
     <div
       class="fb-like"
       data-share="true"
