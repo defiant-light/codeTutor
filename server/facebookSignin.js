@@ -15,9 +15,9 @@ passport.deserializeUser(function(obj, done) {
 
 //move clientID and secret as to not expose credentials
 passport.use(new FacebookStrategy({
-    clientID: 1545918208991310,
-    clientSecret: '96563b6dd3550f03538db3b12621e8b5',
-    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    clientID: 750262331736676,
+    clientSecret: 'c0b054477dc3ce8979ef818c52f62255',
+    callbackURL: "http://codetutor.elasticbeanstalk.com/auth/facebook/callback",
   },
   function(accessToken, refreshToken, profile, done) {
     var profileIdString = profile.id.toString();
