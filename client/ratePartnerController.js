@@ -1,18 +1,48 @@
-angular.module('codeTutorApp', ['ui.bootstrap']).controller('RatingDemoCtrl', function ($scope) {
-  $scope.rate = 7;
-  $scope.max = 10;
-  $scope.isReadonly = false;
+// angular.module('FundooDirectiveTutorial', [])
+//   .controller('FundooCtrl', function($scope, $window) {
+//     $scope.rating = 5;
+//     $scope.saveRatingToServer = function(rating) {
+//       $window.alert('Rating selected - ' + rating);
+//     };
+//   })
+//   .directive('fundooRating', function () {
+//     return {
+//       restrict: 'A',
+//       template: '<ul class="rating">' +
+//                   '<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' +
+//                     '\u2605' +
+//                   '</li>' +
+//                 '</ul>',
+//       scope: {
+//         ratingValue: '=',
+//         max: '=',
+//         readonly: '@',
+//         onRatingSelected: '&'
+//       },
+//       link: function (scope, elem, attrs) {
 
-  $scope.hoveringOver = function(value) {
-    $scope.overStar = value;
-    $scope.percent = 100 * (value / $scope.max);
-  };
+//         var updateStars = function() {
+//           scope.stars = [];
+//           for (var  i = 0; i < scope.max; i++) {
+//             scope.stars.push({filled: i < scope.ratingValue});
+//           }
+//         };
 
-  $scope.ratingStates = [
-    {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
-    {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
-    {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
-    {stateOn: 'glyphicon-heart'},
-    {stateOff: 'glyphicon-off'}
-  ];
-});
+//         scope.toggle = function(index) {
+//           if (scope.readonly && scope.readonly === 'true') {
+//             return;
+//           }
+//           scope.ratingValue = index + 1;
+//           scope.onRatingSelected({rating: index + 1});
+//         };
+
+//         scope.$watch('ratingValue', function(oldVal, newVal) {
+//           if (newVal) {
+//             updateStars();
+//           }
+//         });
+//       }
+//     }
+//   });
+
+// http://www.befundoo.com/university/tutorials/angularjs-directives-tutorial/
