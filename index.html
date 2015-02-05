@@ -1,27 +1,50 @@
-
 <!DOCTYPE html>
-<html ng-app='mainApp'>
+<html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- inject:css -->
+  <!-- inject:css -->
   <link rel="stylesheet" href="/client/css/bower.css">
   <!-- endinject -->
 
   <script type='text/javascript' src='http://cdn.icecomm.io/icecomm.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- inject:js -->
+  <!-- inject:js -->
   <script src="/client/js/vendors.js"></script>
   <script src="/client/js/app.js"></script>
   <!-- endinject -->
 </head>
-<body>
-  <div ui-view></div>
 
-   <a ui-sref="state1">State 1</a>
-   <a ui-sref="state2">State 2</a>
+<body ng-app='mainApp'>
+  <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">codeTutor</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a ui-sref="signin">Sign In</a></li>
+            <li><a ui-sref="videochat">Video Chat</a></li>
+            <li><a ui-sref="selectsubject">Select a Subject</a></li>
+            <li><a ui-sref="ratepartner">Rate Your Last Partner</a></li>
 
+            <!-- <li><button type="button" class="btn btn-success navbar-btn">Sign up</button></li> -->
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+  <div ui-view class='container'></div>
+
+    <div class="container">
+      <footer></footer>
+    </div> <!-- /container -->
 </body>
 </html>

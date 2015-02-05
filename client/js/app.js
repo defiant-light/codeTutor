@@ -1,24 +1,32 @@
-angular.module('mainApp',["ui.router"
+angular.module('mainApp',["ui.router","selectsubject"
 	])
 	.config(function($stateProvider, $urlRouterProvider){
 		
-    $urlRouterProvider.otherwise("/state1");
+    $urlRouterProvider.otherwise("/signin");
 
     $stateProvider
-			.state('state1', {
-        url:'/state1',
-        templateUrl: 'client/test.html'
+      .state('signin', {
+        url:'/signin', 
+        templateUrl: 'client/signin.html'
       })
-      .state('state2', {
-        url:'/state2', 
-        templateUrl: 'client/test2.html'
+      .state('selectsubject', {
+        url:'/selectsubject', 
+        templateUrl: 'client/selectSubject.html'
+      })
+			.state('videochat', {
+        url:'/videochat',
+        templateUrl: 'client/videoChat.html'
+      })
+			.state('ratepartner', {
+        url:'/ratepartner',
+        templateUrl: 'client/ratePartner.html'
       })
 	});
 
 
-angular.module('codeTutorApp', ['translateModule', 'ngFx'])
-
+angular.module('selectsubject', ['translateModule', 'ngFx'])
 .controller('selectSubjectController', function($scope, $http, Translate) {
+  console.log("is this even being loaded?");
   $scope.languages = [['Javascript','us'],['Python','cn'],['Algebra','es'],['Geometry','fr'],['SQL','it']];
   $scope.levels = [["Expert",10],["Experienced",8],["Intermediate",6],["Beginner",4],["Novice",2]];
   $scope.estimates=[

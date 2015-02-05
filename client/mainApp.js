@@ -1,16 +1,24 @@
-angular.module('mainApp',["ui.router"
+angular.module('mainApp',["ui.router","selectsubject"
 	])
 	.config(function($stateProvider, $urlRouterProvider){
 		
-    $urlRouterProvider.otherwise("/state1");
+    $urlRouterProvider.otherwise("/signin");
 
     $stateProvider
-			.state('state1', {
-        url:'/state1',
-        templateUrl: 'client/test.html'
+      .state('signin', {
+        url:'/signin', 
+        templateUrl: 'client/signin.html'
       })
-      .state('state2', {
-        url:'/state2', 
-        templateUrl: 'client/test2.html'
+      .state('selectsubject', {
+        url:'/selectsubject', 
+        templateUrl: 'client/selectSubject.html'
+      })
+			.state('videochat', {
+        url:'/videochat',
+        templateUrl: 'client/videoChat.html'
+      })
+			.state('ratepartner', {
+        url:'/ratepartner',
+        templateUrl: 'client/ratePartner.html'
       })
 	});
