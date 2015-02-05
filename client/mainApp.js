@@ -1,4 +1,4 @@
-angular.module('mainApp',["ui.router","selectsubject"
+angular.module('mainApp',["ui.router","selectsubject","videochat"
 	])
 	.config(function($stateProvider, $urlRouterProvider){
 		
@@ -21,4 +21,7 @@ angular.module('mainApp',["ui.router","selectsubject"
         url:'/ratepartner',
         templateUrl: 'client/ratePartner.html'
       })
-	});
+	})
+.service('video', function () {
+  return {video:"Left Shark"};
+});

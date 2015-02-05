@@ -1,6 +1,5 @@
 angular.module('selectsubject', ['translateModule', 'ngFx'])
-.controller('selectSubjectController', function($scope, $http, Translate) {
-  console.log("is this even being loaded?");
+.controller('selectSubjectController', function($scope, $http, Translate, video) {
   $scope.languages = [['Javascript','us'],['Python','cn'],['Algebra','es'],['Geometry','fr'],['SQL','it']];
   $scope.levels = [["Expert",10],["Experienced",8],["Intermediate",6],["Beginner",4],["Novice",2]];
   $scope.estimates=[
@@ -15,6 +14,7 @@ angular.module('selectsubject', ['translateModule', 'ngFx'])
   $scope.level={};
   $scope.language = {};
   $scope.estimate = {};
+  $scope.video=video;
 
   $scope.showChatApp = false;
   $scope.showingVideo = false;
@@ -28,7 +28,7 @@ angular.module('selectsubject', ['translateModule', 'ngFx'])
   }
 
   $scope.submitLanguages = function(languageSelections){
-
+    $scope.video=$scope.language;
     console.log(languageSelections);
     $scope.showingVideo=true;
 
