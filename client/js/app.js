@@ -118,7 +118,7 @@ angular.module('mainApp',["ui.router"
 	])
 	.config(function($stateProvider, $urlRouterProvider){
 		
-    $urlRouterProvider.otherwise("/state1");
+    $urlRouterProvider.otherwise("/signin");
 
     $stateProvider
 	    .state('signup', {
