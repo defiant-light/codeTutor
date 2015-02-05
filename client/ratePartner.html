@@ -3,6 +3,7 @@
 <head>
     <!-- inject:css -->
   <link rel="stylesheet" href="/client/css/bower.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />  
   <!-- endinject -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- inject:js -->
@@ -50,18 +51,30 @@
     </nav>
 		    <div class="jumbotron">
       <div class="container">
-        <form action="/signin" method="post">
-          <h3>Rating</h3>
+        <form action="/ratePartner" method="post">
+          <h3>Please Rate Your Last Partner</h3>
           <div class="form-group">
 	          <div class="rating">
-	            <label class="review-title" for="exampleInputEmail1">Review</label>
-			  			<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+	            <label class="review-title" for="exampleInputEmail1">Knowledgable</label>
+			  			<span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span>
 						</div>
-            <input type="text" class="form-control" id="username" placeholder="Please rate your last partner">
+          </div>
+          <div class="form-group">
+            <div class="rating">
+              <label class="review-title" for="exampleInputEmail1">Helpfulness</label>
+              <span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="rating">
+              <label class="review-title" for="exampleInputEmail1">Friendliness</label>
+              <span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span>
+            </div>
+            <!-- <input type="text" class="form-control" id="username" placeholder="Please rate your last partner"> -->
           </div>
         </form>
         <form method="post" action="/ratePartner">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary submit-rating">Submit</button>
         </form>
 
         <br>
