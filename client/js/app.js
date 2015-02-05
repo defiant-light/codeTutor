@@ -1,4 +1,4 @@
-angular.module('mainApp',["ui.router","selectsubject"
+angular.module('mainApp',["ui.router","selectsubject","videochat"
 	])
 	.config(function($stateProvider, $urlRouterProvider){
 		
@@ -21,12 +21,31 @@ angular.module('mainApp',["ui.router","selectsubject"
         url:'/ratepartner',
         templateUrl: 'client/ratePartner.html'
       })
-	});
+	})
+.service('video', function () {
+  return {video:"Left Shark"};
+});
 
+angular.module('codeTutorApp', ['ui.bootstrap']).controller('RatingDemoCtrl', function ($scope) {
+  $scope.rate = 7;
+  $scope.max = 10;
+  $scope.isReadonly = false;
 
+  $scope.hoveringOver = function(value) {
+    $scope.overStar = value;
+    $scope.percent = 100 * (value / $scope.max);
+  };
+
+  $scope.ratingStates = [
+    {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
+    {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
+    {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
+    {stateOn: 'glyphicon-heart'},
+    {stateOff: 'glyphicon-off'}
+  ];
+});
 angular.module('selectsubject', ['translateModule', 'ngFx'])
-.controller('selectSubjectController', function($scope, $http, Translate) {
-  console.log("is this even being loaded?");
+.controller('selectSubjectController', function($scope, $http, Translate, video) {
   $scope.languages = [['Javascript','us'],['Python','cn'],['Algebra','es'],['Geometry','fr'],['SQL','it']];
   $scope.levels = [["Expert",10],["Experienced",8],["Intermediate",6],["Beginner",4],["Novice",2]];
   $scope.estimates=[
@@ -41,6 +60,7 @@ angular.module('selectsubject', ['translateModule', 'ngFx'])
   $scope.level={};
   $scope.language = {};
   $scope.estimate = {};
+  $scope.video=video;
 
   $scope.showChatApp = false;
   $scope.showingVideo = false;
@@ -54,7 +74,7 @@ angular.module('selectsubject', ['translateModule', 'ngFx'])
   }
 
   $scope.submitLanguages = function(languageSelections){
-
+    $scope.video=$scope.language;
     console.log(languageSelections);
     $scope.showingVideo=true;
 
@@ -184,3 +204,9 @@ angular.module('translateModule', [])
   };
   */
 })
+angular.module('videochat', [])
+.controller('videoChatController', function($scope,video) {
+  angular.extend($scope,video);
+  console.log(video);
+  console.log($scope.video);
+});
