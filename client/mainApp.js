@@ -1,4 +1,4 @@
-angular.module('mainApp',["ui.router"
+angular.module('mainApp',["ui.router", "ratePartnerController"
 	])
 	.config(function($stateProvider, $urlRouterProvider){
 		
@@ -19,7 +19,7 @@ angular.module('mainApp',["ui.router"
       })
 			.state('ratepartner', {
         url:'/ratepartner',
-        templateUrl: 'client/ratePartner.html'
+        templateUrl: 'client/ratepartner.html'
       })
 
 	});
