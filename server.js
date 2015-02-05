@@ -81,6 +81,9 @@ app.get('/api/position', function(req, res) {
 
 });
 
+app.get('/ratePartner', User.ratePartnerForm);
+//app.post('/ratePartner', User.signUpUser);
+
 app.get('/signup', User.signUpUserForm);
 app.post('/signup', User.signUpUser);
 
