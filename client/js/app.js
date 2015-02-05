@@ -20,11 +20,21 @@ angular.module('mainApp',["ui.router","selectsubject", "ratepartner"])
         url:'/ratepartner',
         templateUrl: 'client/ratepartner.html'
       })
+
+      .state('logout', {
+        url: '/signin', 
+        templateUrl: 'client/signin.html'
+      })
+      
 	});
 
 
-angular.module('ratepartner',[]).controller('RatingCtrl', function ($scope) {
+
+//angular.module('ratepartner',[]).controller('RatingCtrl', function ($scope) {
   //console.log("this is my RatingCtrl");
+
+angular.module('codeTutorApp', ['ui.bootstrap']).controller('RatingDemoCtrl', function ($scope) {
+
   $scope.rate = 7;
   $scope.max = 10;
   $scope.isReadonly = false;
@@ -41,7 +51,10 @@ angular.module('ratepartner',[]).controller('RatingCtrl', function ($scope) {
     {stateOn: 'glyphicon-heart'},
     {stateOff: 'glyphicon-off'}
   ];
+
 });
+
+//});
 
 angular.module('selectsubject', ['translateModule', 'ngFx'])
 .controller('selectSubjectController', function($scope, $http, Translate) {

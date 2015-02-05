@@ -20,5 +20,11 @@ angular.module('mainApp',["ui.router","selectsubject", "ratepartner"])
         url:'/ratepartner',
         templateUrl: 'client/ratepartner.html'
       })
+
+      // .state('logout', {
+      //   url: '/signin', 
+      //   templateUrl: 'client/signin.html'
+      // })
+      
 	});
 
