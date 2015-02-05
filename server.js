@@ -17,6 +17,8 @@ var passport = require('./server/facebookSignin.js');
 var port = process.env.PORT || 3000;
 var host = process.env.host || '127.0.0.1';
 
+var util = require('./server/sessionUtils');
+
 
 app.use(express.static(__dirname));
 // app.use(express.cookieParser('shhhh, very secret'));
@@ -72,17 +74,12 @@ app.get('/api/getroom', function(request, response) {
 });
 
 app.get('/api/position', function(req, res) {
-  var room = req.query.room;
-
-  // response.s 
 
   var room = req.query.room;
   // for(var i = 0;)
 
 });
 
-app.get('/signup', User.signUpUserForm);
-app.post('/signup', User.signUpUser);
 
 app.get('/signin', User.signInUserForm);
 app.post('/signin', User.signInUser);
@@ -98,5 +95,11 @@ app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', '
 // access was granted, the user will be logged in.  Otherwise,
 // authentication has failed.
 app.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { successRedirect: '/',
+  passport.authenticate('facebook', { successRedirect: '/#/selectSubject',
                                       failureRedirect: '/login' }));
+
+app.get('/*', util.checkUser, function(req, res){
+  console.log(req.body.url);
+  res.redirect('/#/test2');
+
+})

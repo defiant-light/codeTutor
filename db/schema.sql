@@ -1,3 +1,3 @@
-CREATE DATABASE language;
+CREATE DATABASE codeTutor;
 
-USE language;
+USE codeTutor;
