@@ -84,3 +84,9 @@ exports.signUpUser = function(req, res) {
     res.redirect('../../client/signin.html');
   });
 };
+
+exports.ratePartnerForm = function(req, res) {
+  res.redirect('../../client/ratePartner.html');
+};
+
+
