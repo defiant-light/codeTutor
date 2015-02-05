@@ -22,6 +22,6 @@ angular.module('mainApp',["ui.router","selectsubject","videochat"
         templateUrl: 'client/ratePartner.html'
       })
 	})
-.service('video', function () {
-  return {video:"Left Shark"};
+.factory('video', function () {
+  return {options:{}};
 });

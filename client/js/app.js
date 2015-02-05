@@ -22,8 +22,8 @@ angular.module('mainApp',["ui.router","selectsubject","videochat"
         templateUrl: 'client/ratePartner.html'
       })
 	})
-.service('video', function () {
-  return {video:"Left Shark"};
+.factory('video', function () {
+  return {options:{}};
 });
 
 angular.module('codeTutorApp', ['ui.bootstrap']).controller('RatingDemoCtrl', function ($scope) {
@@ -60,7 +60,10 @@ angular.module('selectsubject', ['translateModule', 'ngFx'])
   $scope.level={};
   $scope.language = {};
   $scope.estimate = {};
-  $scope.video=video;
+  //my god we have done it
+  video.options=$scope.language;
+  console.log(video);
+
 
   $scope.showChatApp = false;
   $scope.showingVideo = false;
@@ -209,4 +212,6 @@ angular.module('videochat', [])
   angular.extend($scope,video);
   console.log(video);
   console.log($scope.video);
+  
+  
 });

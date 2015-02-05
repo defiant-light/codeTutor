@@ -3,4 +3,6 @@ angular.module('videochat', [])
   angular.extend($scope,video);
   console.log(video);
   console.log($scope.video);
+  
+  
 });

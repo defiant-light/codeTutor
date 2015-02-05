@@ -14,7 +14,10 @@ angular.module('selectsubject', ['translateModule', 'ngFx'])
   $scope.level={};
   $scope.language = {};
   $scope.estimate = {};
-  $scope.video=video;
+  //my god we have done it
+  video.options=$scope.language;
+  console.log(video);
+
 
   $scope.showChatApp = false;
   $scope.showingVideo = false;
