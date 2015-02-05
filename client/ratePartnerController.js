@@ -1,5 +1,9 @@
-angular.module('ratepartner',[]).controller('RatingCtrl', function ($scope) {
+
+//angular.module('ratepartner',[]).controller('RatingCtrl', function ($scope) {
   //console.log("this is my RatingCtrl");
+
+angular.module('codeTutorApp', ['ui.bootstrap']).controller('RatingDemoCtrl', function ($scope) {
+
   $scope.rate = 7;
   $scope.max = 10;
   $scope.isReadonly = false;
@@ -16,4 +20,7 @@ angular.module('ratepartner',[]).controller('RatingCtrl', function ($scope) {
     {stateOn: 'glyphicon-heart'},
     {stateOff: 'glyphicon-off'}
   ];
+
 });
+
+//});
