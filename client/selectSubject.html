@@ -18,7 +18,7 @@
     </div>
     <div ng-if="options.subject && options.level && !options.estimate" class="list-group col-md-4 fx-fade-left fx-speed-500 fx-easing-back">
       <h2> I expect that my problem will take...  </h2>
-      <a ng-repeat="estimate in estimates"  href="#" ng-click="options.estimate=estimate[1]" class="list-group-item">
+      <a ng-repeat="estimate in estimates" ui-sref="videochat" ng-click="options.estimate=estimate[1]" class="list-group-item">
         {{ estimate[0] }}
         <span class="glyphicon glyphicon-menu-right right" aria-hidden="true"></span>
       </a>
