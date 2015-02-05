@@ -23,5 +23,5 @@ angular.module('mainApp',["ui.router","selectsubject","videochat"
       })
 	})
 .factory('video', function () {
-  return {options:{}};
+  return {options:null};
 });
