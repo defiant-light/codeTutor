@@ -1,5 +1,4 @@
-angular.module('mainApp',["ui.router", "ratePartnerController"
-	])
+angular.module('mainApp',["ui.router","selectsubject", "ratepartner"])
 	.config(function($stateProvider, $urlRouterProvider){
 		
     $urlRouterProvider.otherwise("/signin");
@@ -21,5 +20,5 @@ angular.module('mainApp',["ui.router", "ratePartnerController"
         url:'/ratepartner',
         templateUrl: 'client/ratepartner.html'
       })
-
 	});
+

@@ -1,24 +1,23 @@
-
 <!DOCTYPE html>
-<html ng-app='mainApp'>
+<html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- inject:css -->
+  <!-- inject:css -->
   <link rel="stylesheet" href="/client/css/bower.css">
-  
   <!-- endinject -->
 
   <script type='text/javascript' src='http://cdn.icecomm.io/icecomm.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- inject:js -->
+  <!-- inject:js -->
   <script src="/client/js/vendors.js"></script>
   <script src="/client/js/app.js"></script>
   <!-- endinject -->
 </head>
-<body>
+
+<body ng-app='mainApp'>
   <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -32,8 +31,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <!-- <li>&nbsp;&nbsp;&nbsp;&nbsp;</li> -->
-            <li><a ui-sref="signup">Sign Up</a></li>
             <li><a ui-sref="signin">Sign In</a></li>
             <li><a ui-sref="videochat">Video Chat</a></li>
             <li><a ui-sref="selectsubject">Select a Subject</a></li>
@@ -47,10 +44,7 @@
   <div ui-view class='container'></div>
 
     <div class="container">
-      <hr>
-
-      <footer>
-      </footer>
+      <footer></footer>
     </div> <!-- /container -->
 </body>
 </html>

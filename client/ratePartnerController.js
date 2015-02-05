@@ -1,4 +1,4 @@
-angular.module('mainApp').controller('RatingCtrl', function ($scope) {
+angular.module('ratepartner',[]).controller('RatingCtrl', function ($scope) {
   //console.log("this is my RatingCtrl");
   $scope.rate = 7;
   $scope.max = 10;
