@@ -8,12 +8,12 @@ var port = 3306;
 
 //dev vs prod credentials
 if (process.env.languageappdb) {
-  var sequelize = new Sequelize('languageapp', 'aberrantmarble', 'hr23greenfield', {
+  var sequelize = new Sequelize('codeTutor', 'aberrantmarble', 'hr23greenfield', {
     host: process.env.languageappdb,
     port: process.env.languageappdbport,
     dialect: 'mysql',
   });  
-} else { var sequelize = new Sequelize('language', 'root', '', {
+} else { var sequelize = new Sequelize('codeTutor', 'root', '', {
   dialect: 'mysql',
 });
 }

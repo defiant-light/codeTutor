@@ -87,6 +87,10 @@ app.post('/signin', User.signInUser);
 app.get('/logout', User.logoutUser);
 app.post('/logout', User.signInUser);
 
+app.get('/#/videochat', function(req, res){
+  res.redirect('../../client/signup.html');
+});
+
 //Passport facebook auth
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_birthday', 'user_likes'] }));
 
@@ -99,7 +103,6 @@ app.get('/auth/facebook/callback',
                                       failureRedirect: '/login' }));
 
 app.get('/*', util.checkUser, function(req, res){
-  console.log(req.body.url);
-  res.redirect('/#/test2');
-
+  console.log('testing');
+  res.redirect(req.body.url);
 })
