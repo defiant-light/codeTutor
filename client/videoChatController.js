@@ -97,7 +97,7 @@ angular.module('videochat', [])
   }
   
   
-  if (video.options){
+  if (video.options && video.options.subject){
     $scope.submitLanguages(video.options);
   }
   
