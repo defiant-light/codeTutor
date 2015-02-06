@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 angular.module('authentication', [])
 
 	.controller('AuthController', function($scope, $window, $location, Auth){
@@ -31,7 +30,6 @@ angular.module('authentication', [])
 		};
 
 		var isAuth = function(){
-			console.log($window.localStorage.getItem('com.codeTutor'));
 			return !!$window.localStorage.getItem('com.codeTutor');
 		};
 
@@ -48,10 +46,7 @@ angular.module('authentication', [])
 
 
 	});
-angular.module('mainApp',["ui.router","selectsubject","authentication"
-=======
-angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner"
->>>>>>> 6c792cc9902cfe21d26df77abd29a1b8f0067824
+angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner","authentication"
 	])
 	.config(function($stateProvider, $urlRouterProvider, $httpProvider){
 		
@@ -73,12 +68,14 @@ angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner"
       })
 			.state('ratepartner', {
         url:'/ratepartner',
-<<<<<<< HEAD
         templateUrl: 'client/ratePartner.html'
       });
 
       $httpProvider.interceptors.push('AttachTokens');
 	})
+  .factory('video', function () {
+    return {options:null};
+  })
   .factory('AttachTokens',function($window){
     var attach = {
       request: function(object){
@@ -102,40 +99,6 @@ angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner"
     });
   });
 
-angular.module('codeTutorApp', ['ui.bootstrap']).controller('RatingDemoCtrl', function ($scope) {
-  $scope.rate = 7;
-  $scope.max = 10;
-  $scope.isReadonly = false;
-
-  $scope.hoveringOver = function(value) {
-    $scope.overStar = value;
-    $scope.percent = 100 * (value / $scope.max);
-  };
-
-  $scope.ratingStates = [
-    {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
-    {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
-    {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
-    {stateOn: 'glyphicon-heart'},
-    {stateOff: 'glyphicon-off'}
-  ];
-});
-angular.module('selectsubject', ['translateModule', 'ngFx'])
-.controller('selectSubjectController', function($scope, $http, Translate) {
-  $scope.languages = [['Javascript','us'],['Python','cn'],['Algebra','es'],['Geometry','fr'],['SQL','it']];
-  $scope.levels = [["Expert",10],["Experienced",8],["Intermediate",6],["Beginner",4],["Novice",2]];
-=======
-        templateUrl: 'client/ratepartner.html'
-      })
-
-      // .state('logout', {
-      //   url: '/signin', 
-      //   templateUrl: 'client/signin.html'
-      // })
-	})
-.factory('video', function () {
-  return {options:null};
-});
 
 angular.module("ratepartner", [])
 .controller("ratePartnerController", function($scope) {
@@ -209,7 +172,7 @@ angular.module('selectsubject', [])
     ["Beginner",4],
     ["Novice",2]
   ];
->>>>>>> 6c792cc9902cfe21d26df77abd29a1b8f0067824
+
   $scope.estimates=[
     ["More than 1 hour",60],
     ["More than 30 minutes",30],
