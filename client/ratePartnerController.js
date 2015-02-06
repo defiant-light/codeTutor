@@ -1,5 +1,5 @@
 angular.module("ratepartner", [])
-.controller("ratePartnerController", function($scope, ratings) {
+.controller("ratePartnerController", function($scope, $http, ratings) {
   $scope.rating = 5;
   // $scope.helpfulnessRating = 5;
   // $scope.knowledgeRating = 5;
@@ -14,19 +14,28 @@ angular.module("ratepartner", [])
   $scope.rateFunctionHelpfulness = function(rating) {
     //var helpfulnessRating = rating;
     ratings.options.helpfulnessRating = rating;
-    $scope.helpfulnessRating = rating;
+    //$scope.helpfulnessRating = rating;
     console.log("Rating selected - " + rating);
   };
   $scope.rateFunctionFriendliness = function(rating) {
     //var friendlinessRating = rating;
     ratings.options.friendlinessRating = rating;
-    $scope.friendlinessRating = rating;
+    //$scope.friendlinessRating = rating;
     console.log("Rating selected - " + rating);
   };
+
   $scope.notifyRating = function() {
     console.log("Luke is awesome!");
     console.log(ratings.options);
+    return $http({
+      method: 'POST',
+      url: '/api/ratingroom',
+    })
+    .success(function(data){
+      console.log(data);
+    })
   }
+
 })
 .directive("starRating", function() {
   return {

@@ -8,6 +8,9 @@ var session = require('express-session');
 // config file to instantiate 
 var User = require('./server/user/userController');
 var Users = require('./db/index');
+
+
+var Ratings = require('./db/index');
 // config file to instantiate all queues
 var queues = require('./server/queue/queueCollection.js');
 var queueModel = require('./server/queue/queueModel.js');
@@ -52,7 +55,7 @@ app.get('/', function(request, response) {
 //create a queue for that specific language queue, then 
 app.get('/api/getroom', function(request, response) {
 
-
+  //response.send('hello world!');
   var subject = request.query.subject;
   var level = request.query.level;
 
@@ -76,6 +79,15 @@ app.get('/api/getroom', function(request, response) {
 
 app.post('/api/users/signin', User.signInUser);
 
+app.post('/api/ratingroom', function(req, res){
+  res.send("hello world!");
+  // serve up ratings page
+
+});
+
+// app.get('/api/ratingroom', function(req, res){
+//   res.send("hello world!");
+// })
 
 //Passport facebook auth
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_birthday', 'user_likes'] }));

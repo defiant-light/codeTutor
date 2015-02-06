@@ -14,7 +14,7 @@ if (process.env.languageappdb) {
     dialect: 'mysql',
   });  
 
-} else { var sequelize = new Sequelize('codeTutor', 'root', '', {
+} else { var sequelize = new Sequelize('codeTutor', 'root', 'flyhigh21', {
   dialect: 'mysql',
 });
 }
