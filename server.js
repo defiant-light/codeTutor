@@ -84,7 +84,26 @@ app.post('/api/ratepartner', function(req, res){
   console.log(req.body);
 
   Ratings.create({
-        rater: 'Luke Davis!'
+        ratingtype: 'knowledgeRating',
+        rating: req.body.options.knowledgeRating,
+        rater: "Luke Davis"
+      }).then(function(rater){
+        console.log(rater)
+  });
+
+  Ratings.create({
+        ratingtype: 'helpfulnessRating',
+        rating: req.body.options.helpfulnessRating,
+        rater: "Luke Davis"
+      }).then(function(rater){
+        console.log(rater)
+  });
+
+
+  Ratings.create({
+        ratingtype: 'friendlinessRating',
+        rating: req.body.options.friendlinessRating,
+        rater: "Luke Davis"
       }).then(function(rater){
         console.log(rater)
   });
