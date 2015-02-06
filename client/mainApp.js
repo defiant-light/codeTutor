@@ -1,4 +1,4 @@
-angular.module('mainApp',["ui.router","selectsubject"
+angular.module('mainApp',["ui.router","selectsubject", "ratepartner"
 	])
 	.config(function($stateProvider, $urlRouterProvider){
 		

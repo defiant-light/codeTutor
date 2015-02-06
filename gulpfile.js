@@ -30,7 +30,8 @@ var vendor = gulp.src([
     './bower_components/angular/angular.js',
     './bower_components/angular-ui-router/release/angular-ui-router.min.js',
     './bower_components/ngFx/dist/ngFx.min.js',
-    './bower_components/bootstrap/dist/js/bootstrap.min.js'
+    './bower_components/bootstrap/dist/js/bootstrap.min.js',
+    './font-awesome/css/font-awesome.min.css'
     ])
   .pipe(concat('vendors.js'))
   .pipe(gulp.dest('./client/js'));
