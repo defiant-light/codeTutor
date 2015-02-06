@@ -37,3 +37,5 @@ rootkey.csv
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+facebookCredentials.js

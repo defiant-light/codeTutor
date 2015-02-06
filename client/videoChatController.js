@@ -6,7 +6,7 @@ angular.module('videochat', [])
   //load the video with the options, if they're not null
   
   $scope.disconnect = function(){
-    console.log('disconecting');
+    console.log('disconnecting');
     $scope.comm.close();
   }
 
