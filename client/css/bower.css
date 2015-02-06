@@ -1624,10 +1624,10 @@ h3 {
   }
 }
 
-.rating .filled {
+/*.rating .filled {
   color: #21568b;
 }
-
+*/
 .rating div .filled {
   color: #21568b;
 }
