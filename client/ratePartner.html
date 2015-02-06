@@ -1,121 +1,52 @@
 
-<!-- <div class='container' ng-ratepartner>
-  <div class='jumbotron'>
-<div ng-controller="RatingCtrl">
-    <h3>Rate Your Last Partner</h3>
-    <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
-    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
-
-    <button class="btn btn-sm btn-danger" ng-click="rate = 0" ng-disabled="isReadonly">Clear</button>
-    <button class="btn btn-sm btn-default" ng-click="isReadonly = ! isReadonly">Toggle Readonly</button>
-    <hr />
-
-    <h4>Custom icons</h4>
-    <div ng-init="x = 5"><rating ng-model="x" max="15" state-on="'glyphicon-ok-sign'" state-off="'glyphicon-ok-circle'"></rating> <b>(<i>Rate:</i> {{x}})</b></div>
-    <div ng-init="y = 2"><rating ng-model="y" rating-states="ratingStates"></rating> <b>(<i>Rate:</i> {{y}})</b></div>
-</div>
-    
-</div>
-</div>
-</div> -->
-
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- inject:css -->
-  <link rel="stylesheet" href="/client/css/bower.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />  
-  <!-- endinject -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- inject:js -->
-  <script src="/client/js/vendors.js"></script>
-  <script src="/client/js/app.js"></script>
-  <!-- endinject -->
-</head>
-<body>
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '750262331736676',
-          xfbml      : true,
-          version    : 'v2.2'
-        });
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-   <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">codeTutor</a>
+<div class="jumbotron">
+  <form action="/ratePartner" method="post">
+    <h3>Please Rate Your Last Partner</h3>
+    <div class="form-group">
+      <div class="rating">
+        <label class="review-title" for="exampleInputEmail1">Knowledgable</label>
+        <div class="star-wrapper">
+          <div ng-ratepartner ng-controller="ratePartnerController" ng-init="rating = star.rating + 1">
+          <div class="star-rating" star-rating rating-value="rating" max="5" on-rating-selected="rateFunctionKnowledge(rating)"></div>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <!-- <li>&nbsp;&nbsp;&nbsp;&nbsp;</li> -->
-            <li><a href="/logout">Log out</a></li>
-            <!-- <li><button type="button" class="btn btn-success navbar-btn">Sign up</button></li> -->
-          </ul>
-        </div><!--/.navbar-collapse -->
       </div>
-    </nav>
-		    <div class="jumbotron">
-      <div class="container">
-        <form action="/ratePartner" method="post">
-          <h3>Please Rate Your Last Partner</h3>
-          <div class="form-group">
-	          <div class="rating">
-	            <label class="review-title" for="exampleInputEmail1">Knowledgable</label>
-			  			<span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span>
-						</div>
-          </div>
-          <div class="form-group">
-            <div class="rating">
-              <label class="review-title" for="exampleInputEmail1">Helpfulness</label>
-              <span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="rating">
-              <label class="review-title" for="exampleInputEmail1">Friendliness</label>
-              <span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span><span class="star">☆</span>
-            </div>
-            <!-- <input type="text" class="form-control" id="username" placeholder="Please rate your last partner"> -->
-          </div>
-        </form>
-        <form method="post" action="/ratePartner">
-          <button type="submit" class="btn btn-primary submit-rating">Submit</button>
-        </form>
-
-        <br>
+    </div>
+    <br>
+    <div class="form-group">
+      <div class="rating">
+        <label class="review-title" for="exampleInputEmail1">Helpfulness</label>
+        <div class="star-wrapper">
+          <div ng-ratepartner ng-controller="ratePartnerController" ng-init="rating = star.rating + 1">
+          <div class="star-rating" star-rating rating-value="rating" max="5" on-rating-selected="rateFunctionHelpfulness(rating)"></div>
+        </div>
       </div>
-
     </div>
-    <div class="container">
-      <hr>
-
-      <footer>
-        <p>&copy; codeTutor Inc. 2015</p>
-      </footer>
-    </div> <!-- /container -->
-    <div
-      class="fb-like"
-      data-share="true"
-      data-width="450"
-      data-show-faces="true">
+    <br>
+    <div class="form-group">
+      <div class="rating">
+        <label class="review-title" for="exampleInputEmail1">Friendliness</label>
+        <div class="star-wrapper">
+          <div ng-ratepartner ng-controller="ratePartnerController" ng-init="rating = star.rating + 1 ">
+          <div class="star-rating" star-rating rating-value="rating" max="5" on-rating-selected="rateFunctionFriendliness(rating)"></div>
+        </div>
+      </div>
     </div>
-</body>
-</html>
+  </form>
+  <br>
+  <form method="post" action="/ratePartner">
+    <button type="submit" class="btn btn-primary submit-rating">Submit</button>
+  </form>
+  <br>
+</div>
+
+
+
+
+
+
+
+
+
+

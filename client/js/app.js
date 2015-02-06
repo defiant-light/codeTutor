@@ -1,4 +1,3 @@
-
 angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner"
 	])
 	.config(function($stateProvider, $urlRouterProvider){
@@ -27,39 +26,66 @@ angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner"
       //   url: '/signin', 
       //   templateUrl: 'client/signin.html'
       // })
-      
-	});
 	})
 .factory('video', function () {
   return {options:null};
 });
 
-
-//angular.module('ratepartner',[]).controller('RatingCtrl', function ($scope) {
-  //console.log("this is my RatingCtrl");
-
-angular.module('codeTutorApp', ['ui.bootstrap']).controller('RatingDemoCtrl', function ($scope) {
-
-  $scope.rate = 7;
-  $scope.max = 10;
-  $scope.isReadonly = false;
-
-  $scope.hoveringOver = function(value) {
-    $scope.overStar = value;
-    $scope.percent = 100 * (value / $scope.max);
+angular.module("ratepartner", [])
+.controller("ratePartnerController", function($scope) {
+  $scope.rating = 5;
+  $scope.rateFunctionKnowledge = function(rating) {
+    var knowledgeRating = rating;
+    // console.log("Rating selected - " + rating);
+    console.log(knowledgeRating + " stars knowledgeable")
   };
-
-  $scope.ratingStates = [
-    {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
-    {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
-    {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
-    {stateOn: 'glyphicon-heart'},
-    {stateOff: 'glyphicon-off'}
-  ];
-
+  $scope.rateFunctionHelpfulness = function(rating) {
+    var helpfulnessRating = rating;
+    // console.log("Rating selected - " + rating);
+    console.log(helpfulnessRating + " stars helpful")
+  };
+  $scope.rateFunctionFriendliness = function(rating) {
+    var friendlinessRating = rating;
+    // console.log("Rating selected - " + rating);
+    console.log(friendlinessRating + " stars friendly")
+  };
+})
+.directive("starRating", function() {
+  return {
+    restrict : "A",
+    template : "<div class='rating'>" +
+               "  <div ng-repeat='star in stars' ng-class='star' ng-click='toggle($index)'>" +
+               "    <i class='fa fa-star'></i>" + //&#9733
+               "  </div>" +
+               "</div>",
+    scope : {
+      ratingValue : "=",
+      max : "=",
+      onRatingSelected : "&"
+    },
+    link : function(scope, elem, attrs) {
+      var updateStars = function() {
+        scope.stars = [];
+        for ( var i = 0; i < scope.max; i++) {
+          scope.stars.push({
+            filled : i < scope.ratingValue
+          });
+        }
+      };
+      scope.toggle = function(index) {
+        scope.ratingValue = index + 1;
+        scope.onRatingSelected({
+          rating : index + 1
+        });
+      };
+      scope.$watch("ratingValue", function(oldVal, newVal) {
+        if (newVal) { updateStars(); }
+       });
+    }
+  };
 });
 
-//});
+
 
 angular.module('selectsubject', [])
 .controller('selectSubjectController', function($scope, video) {
