@@ -32,23 +32,34 @@ angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner"
 });
 
 angular.module("ratepartner", [])
-.controller("ratePartnerController", function($scope) {
+.controller("ratePartnerController", function($scope, ratings) {
   $scope.rating = 5;
+  // $scope.helpfulnessRating = 5;
+  // $scope.knowledgeRating = 5;
+  // $scope.friendlinessRating = 5;
+
   $scope.rateFunctionKnowledge = function(rating) {
-    var knowledgeRating = rating;
-    // console.log("Rating selected - " + rating);
-    console.log(knowledgeRating + " stars knowledgeable")
+    //var knowledgeRating = rating;
+    ratings.options.knowledgeRating = rating;
+    //$scope.knowledgeRating = rating;
+    console.log("Rating selected - " + rating);
   };
   $scope.rateFunctionHelpfulness = function(rating) {
-    var helpfulnessRating = rating;
-    // console.log("Rating selected - " + rating);
-    console.log(helpfulnessRating + " stars helpful")
+    //var helpfulnessRating = rating;
+    ratings.options.helpfulnessRating = rating;
+    $scope.helpfulnessRating = rating;
+    console.log("Rating selected - " + rating);
   };
   $scope.rateFunctionFriendliness = function(rating) {
-    var friendlinessRating = rating;
-    // console.log("Rating selected - " + rating);
-    console.log(friendlinessRating + " stars friendly")
+    //var friendlinessRating = rating;
+    ratings.options.friendlinessRating = rating;
+    $scope.friendlinessRating = rating;
+    console.log("Rating selected - " + rating);
   };
+  $scope.notifyRating = function() {
+    console.log("Luke is awesome!");
+    console.log(ratings.options);
+  }
 })
 .directive("starRating", function() {
   return {
@@ -83,6 +94,11 @@ angular.module("ratepartner", [])
        });
     }
   };
+})
+.factory('ratings', function () {
+  return {
+            options:{}
+         };
 });
 
 
@@ -169,7 +185,7 @@ angular.module('videochat', [])
   //load the video with the options, if they're not null
   
   $scope.disconnect = function(){
-    console.log('disconecting');
+    console.log('disconnecting');
     $scope.comm.close();
   }
 

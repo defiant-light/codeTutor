@@ -54,8 +54,7 @@ var Ratings = sequelize.define('Ratings', {
   rater: Sequelize.STRING,
   rated: Sequelize.STRING,
   rating: Sequelize.STRING,
-  type: Sequelize.STRING,
-  timestamp: Sequelize.STRING
+  type: Sequelize.STRING
 });
 
 Ratings
