@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-angular.module('mainApp',["ui.router","selectsubject", "ratepartner"
-=======
-
 angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner"
->>>>>>> b12e816031493bff723588b5c247d47569bb79b8
 	])
 	.config(function($stateProvider, $urlRouterProvider){
 		
@@ -31,29 +26,28 @@ angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner"
       //   url: '/signin', 
       //   templateUrl: 'client/signin.html'
       // })
-      
-	});
 	})
 .factory('video', function () {
   return {options:null};
 });
 
-
-//angular.module('ratepartner',[]).controller('RatingCtrl', function ($scope) {
-  //console.log("this is my RatingCtrl");
-
-angular.module('codeTutorApp', ['ui.bootstrap']).controller('RatingDemoCtrl', function ($scope) {
-
-  $scope.rate = 7;
-  $scope.max = 10;
-  $scope.isReadonly = false;
-
-<<<<<<< HEAD
 angular.module("ratepartner", [])
 .controller("ratePartnerController", function($scope) {
   $scope.rating = 5;
-  $scope.rateFunction = function(rating) {
-    console.log("Rating selected - " + rating);
+  $scope.rateFunctionKnowledge = function(rating) {
+    var knowledgeRating = rating;
+    // console.log("Rating selected - " + rating);
+    console.log(knowledgeRating + " stars knowledgeable")
+  };
+  $scope.rateFunctionHelpfulness = function(rating) {
+    var helpfulnessRating = rating;
+    // console.log("Rating selected - " + rating);
+    console.log(helpfulnessRating + " stars helpful")
+  };
+  $scope.rateFunctionFriendliness = function(rating) {
+    var friendlinessRating = rating;
+    // console.log("Rating selected - " + rating);
+    console.log(friendlinessRating + " stars friendly")
   };
 })
 .directive("starRating", function() {
@@ -86,83 +80,12 @@ angular.module("ratepartner", [])
       };
       scope.$watch("ratingValue", function(oldVal, newVal) {
         if (newVal) { updateStars(); }
-      });
+       });
     }
   };
 });
 
 
-
-// angular.module('FundooDirectiveTutorial', [])
-//   .controller('FundooCtrl', function($scope, $window) {
-//     $scope.rating = 5;
-//     $scope.saveRatingToServer = function(rating) {
-//       $window.alert('Rating selected - ' + rating);
-//     };
-//   })
-//   .directive('fundooRating', function () {
-//     return {
-//       restrict: 'A',
-//       template: '<ul class="rating">' +
-//                   '<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' +
-//                     '\u2605' +
-//                   '</li>' +
-//                 '</ul>',
-//       scope: {
-//         ratingValue: '=',
-//         max: '=',
-//         readonly: '@',
-//         onRatingSelected: '&'
-//       },
-//       link: function (scope, elem, attrs) {
-
-//         var updateStars = function() {
-//           scope.stars = [];
-//           for (var  i = 0; i < scope.max; i++) {
-//             scope.stars.push({filled: i < scope.ratingValue});
-//           }
-//         };
-
-//         scope.toggle = function(index) {
-//           if (scope.readonly && scope.readonly === 'true') {
-//             return;
-//           }
-//           scope.ratingValue = index + 1;
-//           scope.onRatingSelected({rating: index + 1});
-//         };
-
-//         scope.$watch('ratingValue', function(oldVal, newVal) {
-//           if (newVal) {
-//             updateStars();
-//           }
-//         });
-//       }
-//     }
-//   });
-
-// http://www.befundoo.com/university/tutorials/angularjs-directives-tutorial/
-angular.module('selectsubject', ['translateModule', 'ngFx'])
-.controller('selectSubjectController', function($scope, $http, Translate) {
-  console.log("is this even being loaded?");
-  $scope.languages = [['Javascript','us'],['Python','cn'],['Algebra','es'],['Geometry','fr'],['SQL','it']];
-  $scope.levels = [["Expert",10],["Experienced",8],["Intermediate",6],["Beginner",4],["Novice",2]];
-=======
-  $scope.hoveringOver = function(value) {
-    $scope.overStar = value;
-    $scope.percent = 100 * (value / $scope.max);
-  };
-
-  $scope.ratingStates = [
-    {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
-    {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
-    {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
-    {stateOn: 'glyphicon-heart'},
-    {stateOff: 'glyphicon-off'}
-  ];
-
-});
-
-//});
 
 angular.module('selectsubject', [])
 .controller('selectSubjectController', function($scope, video) {
@@ -180,7 +103,6 @@ angular.module('selectsubject', [])
     ["Beginner",4],
     ["Novice",2]
   ];
->>>>>>> b12e816031493bff723588b5c247d47569bb79b8
   $scope.estimates=[
     ["More than 1 hour",60],
     ["More than 30 minutes",30],

@@ -26,8 +26,6 @@ angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner"
       //   url: '/signin', 
       //   templateUrl: 'client/signin.html'
       // })
-      
-	});
 	})
 .factory('video', function () {
   return {options:null};

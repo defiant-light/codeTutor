@@ -1,4 +1,3 @@
-styles.css
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
@@ -103,6 +102,14 @@ h3 {
   .filled {
     color: #fd0; //#21568b
   }
+}
+
+.rating .filled {
+  color: #21568b;
+}
+
+.rating div .filled {
+  color: #21568b;
 }
 
 .star-wrapper {

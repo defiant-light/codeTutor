@@ -1,8 +1,20 @@
 angular.module("ratepartner", [])
 .controller("ratePartnerController", function($scope) {
   $scope.rating = 5;
-  $scope.rateFunction = function(rating) {
-    console.log("Rating selected - " + rating);
+  $scope.rateFunctionKnowledge = function(rating) {
+    var knowledgeRating = rating;
+    // console.log("Rating selected - " + rating);
+    console.log(knowledgeRating + " stars knowledgeable")
+  };
+  $scope.rateFunctionHelpfulness = function(rating) {
+    var helpfulnessRating = rating;
+    // console.log("Rating selected - " + rating);
+    console.log(helpfulnessRating + " stars helpful")
+  };
+  $scope.rateFunctionFriendliness = function(rating) {
+    var friendlinessRating = rating;
+    // console.log("Rating selected - " + rating);
+    console.log(friendlinessRating + " stars friendly")
   };
 })
 .directive("starRating", function() {
@@ -35,5 +47,9 @@ angular.module("ratepartner", [])
       };
       scope.$watch("ratingValue", function(oldVal, newVal) {
         if (newVal) { updateStars(); }
-      });
+       });
     }
+  };
+});
+
+

@@ -9,7 +9,7 @@
         <label class="review-title" for="exampleInputEmail1">Knowledgable</label>
         <div class="star-wrapper">
           <div ng-ratepartner ng-controller="ratePartnerController" ng-init="rating = star.rating + 1">
-          <div star-rating rating-value="rating" max="5" on-rating-selected="rateFunction(rating)"></div>
+          <div class="star-rating" star-rating rating-value="rating" max="5" on-rating-selected="rateFunctionKnowledge(rating)"></div>
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@
         <label class="review-title" for="exampleInputEmail1">Helpfulness</label>
         <div class="star-wrapper">
           <div ng-ratepartner ng-controller="ratePartnerController" ng-init="rating = star.rating + 1">
-          <div star-rating rating-value="rating" max="5" on-rating-selected="rateFunction(rating)"></div>
+          <div class="star-rating" star-rating rating-value="rating" max="5" on-rating-selected="rateFunctionHelpfulness(rating)"></div>
         </div>
       </div>
     </div>
@@ -28,8 +28,8 @@
       <div class="rating">
         <label class="review-title" for="exampleInputEmail1">Friendliness</label>
         <div class="star-wrapper">
-          <div ng-ratepartner ng-controller="ratePartnerController" ng-init="rating = star.rating + 1">
-          <div star-rating rating-value="rating" max="5" on-rating-selected="rateFunction(rating)"></div>
+          <div ng-ratepartner ng-controller="ratePartnerController" ng-init="rating = star.rating + 1 ">
+          <div class="star-rating" star-rating rating-value="rating" max="5" on-rating-selected="rateFunctionFriendliness(rating)"></div>
         </div>
       </div>
     </div>
@@ -40,5 +40,13 @@
   </form>
   <br>
 </div>
+
+
+
+
+
+
+
+
 
 
