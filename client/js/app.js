@@ -19,7 +19,7 @@ angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner"
       })
 			.state('ratepartner', {
         url:'/ratepartner',
-        templateUrl: 'client/ratepartner.html'
+        templateUrl: 'client/ratePartner.html'
       })
 
       // .state('logout', {
