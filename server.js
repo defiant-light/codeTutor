@@ -8,9 +8,8 @@ var session = require('express-session');
 // config file to instantiate 
 var User = require('./server/user/userController');
 var Users = require('./db/index');
+var Ratings = require('./db/ratings');
 
-
-var Ratings = require('./db/index');
 // config file to instantiate all queues
 var queues = require('./server/queue/queueCollection.js');
 var queueModel = require('./server/queue/queueModel.js');
@@ -79,10 +78,17 @@ app.get('/api/getroom', function(request, response) {
 
 app.post('/api/users/signin', User.signInUser);
 
-app.post('/api/ratingroom', function(req, res){
-  res.send("hello world!");
-  // serve up ratings page
+app.post('/api/ratepartner', function(req, res){
+  console.log("rate partner path activated");
 
+  console.log(req.body);
+
+  Ratings.create({
+        rater: 'Luke Davis!'
+      }).then(function(rater){
+        console.log(rater)
+  });
+  // serve up ratings page
 });
 
 // app.get('/api/ratingroom', function(req, res){

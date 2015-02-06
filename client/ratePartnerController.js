@@ -29,7 +29,8 @@ angular.module("ratepartner", [])
     console.log(ratings.options);
     return $http({
       method: 'POST',
-      url: '/api/ratingroom',
+      url: '/api/ratepartner',
+      data: ratings
     })
     .success(function(data){
       console.log(data);
