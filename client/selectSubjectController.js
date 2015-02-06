@@ -14,6 +14,7 @@ angular.module('selectsubject', [])
     ["Beginner",4],
     ["Novice",2]
   ];
+
   $scope.estimates=[
     ["More than 1 hour",60],
     ["More than 30 minutes",30],
