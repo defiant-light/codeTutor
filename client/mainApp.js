@@ -1,4 +1,4 @@
-angular.module('mainApp',["ui.router","selectsubject","videochat"
+angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner"
 	])
 	.config(function($stateProvider, $urlRouterProvider){
 		
@@ -19,8 +19,13 @@ angular.module('mainApp',["ui.router","selectsubject","videochat"
       })
 			.state('ratepartner', {
         url:'/ratepartner',
-        templateUrl: 'client/ratePartner.html'
+        templateUrl: 'client/ratepartner.html'
       })
+
+      // .state('logout', {
+      //   url: '/signin', 
+      //   templateUrl: 'client/signin.html'
+      // })
 	})
 .factory('video', function () {
   return {options:null};
