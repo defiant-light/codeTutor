@@ -4,7 +4,7 @@ module.exports = {
 	},
 
 	checkUser : function (req, res, next){
-		if(isLoggedIn(req)){
+		if(module.exports.isLoggedIn(req)){
 			next();
 		} else {
 			res.redirect('/client/signin.html');

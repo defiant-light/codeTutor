@@ -73,23 +73,9 @@ app.get('/api/getroom', function(request, response) {
   }
 });
 
-app.get('/api/position', function(req, res) {
 
-  var room = req.query.room;
-  // for(var i = 0;)
+app.post('/api/users/signin', User.signInUser);
 
-});
-
-
-app.get('/signin', User.signInUserForm);
-app.post('/signin', User.signInUser);
-
-app.get('/logout', User.logoutUser);
-app.post('/logout', User.signInUser);
-
-app.get('/#/videochat', function(req, res){
-  res.redirect('../../client/signup.html');
-});
 
 //Passport facebook auth
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_birthday', 'user_likes'] }));
@@ -102,7 +88,3 @@ app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { successRedirect: '/#/selectSubject',
                                       failureRedirect: '/login' }));
 
-app.get('/*', util.checkUser, function(req, res){
-  console.log('testing');
-  res.redirect(req.body.url);
-})

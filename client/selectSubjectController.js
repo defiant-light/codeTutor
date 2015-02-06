@@ -1,6 +1,5 @@
 angular.module('selectsubject', ['translateModule', 'ngFx'])
 .controller('selectSubjectController', function($scope, $http, Translate) {
-  console.log("is this even being loaded?");
   $scope.languages = [['Javascript','us'],['Python','cn'],['Algebra','es'],['Geometry','fr'],['SQL','it']];
   $scope.levels = [["Expert",10],["Experienced",8],["Intermediate",6],["Beginner",4],["Novice",2]];
   $scope.estimates=[

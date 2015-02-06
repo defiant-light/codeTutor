@@ -1,13 +1,63 @@
-angular.module('mainApp',["ui.router","selectsubject"
+angular.module('authentication', [])
+
+	.controller('AuthController', function($scope, $window, $location, Auth){
+		$scope.user = {name:'user'};
+
+		$scope.signin = function(){
+			Auth.signin($scope.user)
+				.then(function(token) {
+					$window.localStorage.setItem('com.codeTutor', token);
+					$location.path('/selectsubject')
+				})
+				.catch(function(error) {
+					console.error(error);
+				})
+		};
+
+		$scope.signout = Auth.signout;
+	})
+
+	.factory('Auth', function($http, $location, $window) {
+		var signin = function ( user ) {
+			return $http({
+				method: 'POST',
+				url: '/api/users/signin',
+				data: user
+			})
+			.then(function(resp){
+				return resp.data.token;
+			});
+		};
+
+		var isAuth = function(){
+			console.log($window.localStorage.getItem('com.codeTutor'));
+			return !!$window.localStorage.getItem('com.codeTutor');
+		};
+
+		var signout = function(){
+			$window.localStorage.removeItem('com.codeTutor');
+			$location.path('/signin');
+		};
+
+		return {
+			signin: signin,
+			isAuth: isAuth, 
+			signout: signout
+		};
+
+
+	});
+angular.module('mainApp',["ui.router","selectsubject","authentication"
 	])
-	.config(function($stateProvider, $urlRouterProvider){
+	.config(function($stateProvider, $urlRouterProvider, $httpProvider){
 		
     $urlRouterProvider.otherwise("/signin");
 
     $stateProvider
       .state('signin', {
         url:'/signin', 
-        templateUrl: 'client/signin.html'
+        templateUrl: 'client/signin.html',
+        controller: 'AuthController'
       })
       .state('selectsubject', {
         url:'/selectsubject', 
@@ -20,13 +70,53 @@ angular.module('mainApp',["ui.router","selectsubject"
 			.state('ratepartner', {
         url:'/ratepartner',
         templateUrl: 'client/ratePartner.html'
-      })
-	});
+      });
 
+      $httpProvider.interceptors.push('AttachTokens');
+	})
+  .factory('AttachTokens',function($window){
+    var attach = {
+      request: function(object){
+        var jwt = $window.localStorage.getItem('com.codeTutor');
+        if(jwt) {
+          object.headers['x-access-token'] = jwt;
+        }
+        object.headers['Allow-Control-Allow-Origin'] = '*';
+        return object;
+      }
+    };
+    return attach;
+  })
+  .run(function ($rootScope, $location, $state, Auth) {
+    Auth.signout();
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams){
+      if(toState.name !== 'signin' && !Auth.isAuth()){
+        $state.transitionTo('signin');
+        event.preventDefault();
+      }
+    });
+  });
 
+angular.module('codeTutorApp', ['ui.bootstrap']).controller('RatingDemoCtrl', function ($scope) {
+  $scope.rate = 7;
+  $scope.max = 10;
+  $scope.isReadonly = false;
+
+  $scope.hoveringOver = function(value) {
+    $scope.overStar = value;
+    $scope.percent = 100 * (value / $scope.max);
+  };
+
+  $scope.ratingStates = [
+    {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
+    {stateOn: 'glyphicon-star', stateOff: 'glyphicon-star-empty'},
+    {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
+    {stateOn: 'glyphicon-heart'},
+    {stateOff: 'glyphicon-off'}
+  ];
+});
 angular.module('selectsubject', ['translateModule', 'ngFx'])
 .controller('selectSubjectController', function($scope, $http, Translate) {
-  console.log("is this even being loaded?");
   $scope.languages = [['Javascript','us'],['Python','cn'],['Algebra','es'],['Geometry','fr'],['SQL','it']];
   $scope.levels = [["Expert",10],["Experienced",8],["Intermediate",6],["Beginner",4],["Novice",2]];
   $scope.estimates=[
