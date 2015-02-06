@@ -30,7 +30,6 @@ angular.module('authentication', [])
 		};
 
 		var isAuth = function(){
-			console.log($window.localStorage.getItem('com.codeTutor'));
 			return !!$window.localStorage.getItem('com.codeTutor');
 		};
 
