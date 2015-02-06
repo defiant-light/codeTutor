@@ -51,17 +51,14 @@ User
     });
 
 var Ratings = sequelize.define('Ratings', {
-  username: Sequelize.STRING,
-  facebookId: Sequelize.STRING,   // string bc facebookIds are larger than largest integer value allowed (2147483647 will be used for all FB ids otherwise)
-  firstname: Sequelize.STRING,
-  lastname: Sequelize.STRING,
-  password: Sequelize.STRING,
-  salt: Sequelize.STRING,
-  desired: Sequelize.STRING,
-  native: Sequelize.STRING
+  id: Sequelize.INTEGER,
+  rater: Sequelize.STRING,
+  rated: Sequelize.STRING,
+  rating: Sequelize.STRING,
+  type: Sequelize.STRING
 });
 
-User
+Ratings
   .sync()
   .complete(function(err) {
     if (!!err) {
