@@ -13,7 +13,7 @@ if (process.env.languageappdb) {
     port: process.env.languageappdbport,
     dialect: 'mysql',
   });  
-} else { var sequelize = new Sequelize('language', 'root', '', {
+} else { var sequelize = new Sequelize('codeTutor', 'root', 'flyhigh21', {
   dialect: 'mysql',
 });
 }
@@ -29,6 +29,27 @@ sequelize
   });
 
 var User = sequelize.define('User', {
+  username: Sequelize.STRING,
+  facebookId: Sequelize.STRING,   // string bc facebookIds are larger than largest integer value allowed (2147483647 will be used for all FB ids otherwise)
+  firstname: Sequelize.STRING,
+  lastname: Sequelize.STRING,
+  password: Sequelize.STRING,
+  salt: Sequelize.STRING,
+  desired: Sequelize.STRING,
+  native: Sequelize.STRING
+});
+
+User
+  .sync()
+  .complete(function(err) {
+    if (!!err) {
+      console.log('An error occurred while creating the table: user.sync', err);
+    } else {
+      console.log('Table created!');
+      }
+    });
+
+var Ratings = sequelize.define('Ratings', {
   username: Sequelize.STRING,
   facebookId: Sequelize.STRING,   // string bc facebookIds are larger than largest integer value allowed (2147483647 will be used for all FB ids otherwise)
   firstname: Sequelize.STRING,
