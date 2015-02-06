@@ -1,0 +1,121 @@
+styles.css
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.right {
+  float:right;
+}
+
+.left { 
+  float:left;
+}
+
+.inline {
+  display: inline;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#chatBox {
+  padding-left: 15px;
+  height: 200px;
+  width: 800px;
+}
+
+#chatMsg {
+  padding-left: 15px;
+  width: 600px;
+}
+
+
+#localVideo {
+  width: 50%;
+}
+
+#myVideo{
+  width:50%;
+}
+
+.foreignVideo {
+  width:50%;
+}
+
+.review-title {
+  float: left;
+  font-size: 25px;
+}
+
+h3 {
+  margin-bottom: 40px;
+  font-weight: bold;
+  font-family: arial-black;
+  font-size: 35px;
+}
+
+.submit-rating {
+  margin-top: 20px;
+}
+
+
+
+.rating{
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+  display: inline ;
+  li {
+    padding: 1px;
+    color: #a9a9a9;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    list-style-type: none;
+    display: inline-block;
+    cursor: pointer;
+    &.filled {
+      color: #fd0; //#21568b
+    }
+  }
+}
+
+.form-group {
+  margin-top: 25px;
+}
+
+.rating div{
+  display:inline;
+  padding: 1px;
+  color: #a9a9a9;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  list-style-type: none;
+  display: inline-block;
+  cursor: pointer;
+  .filled {
+    color: #fd0; //#21568b
+  }
+}
+
+.star-wrapper {
+  float: right;
+}
+
+* {
+  font-family: sans-serif;
+}
+a {
+  color: #0084e6;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
