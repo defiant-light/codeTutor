@@ -1,5 +1,5 @@
 angular.module('videochat', [])
-.controller('videoChatController', function($scope,$http,video) {
+.controller('videoChatController', function($scope, $http, video) {
   console.log(video);
   console.log(video.options);
   

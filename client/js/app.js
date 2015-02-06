@@ -101,7 +101,7 @@ angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner"
 
 
 angular.module("ratepartner", [])
-.controller("ratePartnerController", function($scope, ratings) {
+.controller("ratePartnerController", function($scope, $http, ratings) {
   $scope.rating = 5;
   // $scope.helpfulnessRating = 5;
   // $scope.knowledgeRating = 5;
@@ -116,19 +116,29 @@ angular.module("ratepartner", [])
   $scope.rateFunctionHelpfulness = function(rating) {
     //var helpfulnessRating = rating;
     ratings.options.helpfulnessRating = rating;
-    $scope.helpfulnessRating = rating;
+    //$scope.helpfulnessRating = rating;
     console.log("Rating selected - " + rating);
   };
   $scope.rateFunctionFriendliness = function(rating) {
     //var friendlinessRating = rating;
     ratings.options.friendlinessRating = rating;
-    $scope.friendlinessRating = rating;
+    //$scope.friendlinessRating = rating;
     console.log("Rating selected - " + rating);
   };
+
   $scope.notifyRating = function() {
     console.log("Luke is awesome!");
     console.log(ratings.options);
+    return $http({
+      method: 'POST',
+      url: '/api/ratepartner',
+      data: ratings
+    })
+    .success(function(data){
+      console.log(data);
+    })
   }
+
 })
 .directive("starRating", function() {
   return {
@@ -248,7 +258,7 @@ angular.module('translateModule', [])
   */
 })
 angular.module('videochat', [])
-.controller('videoChatController', function($scope,$http,video) {
+.controller('videoChatController', function($scope, $http, video) {
   console.log(video);
   console.log(video.options);
   

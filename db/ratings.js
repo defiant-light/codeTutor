@@ -29,31 +29,12 @@ sequelize
     }
   });
 
-var User = sequelize.define('User', {
-  username: Sequelize.STRING,
-  facebookId: Sequelize.STRING,   // string bc facebookIds are larger than largest integer value allowed (2147483647 will be used for all FB ids otherwise)
-  firstname: Sequelize.STRING,
-  lastname: Sequelize.STRING,
-  password: Sequelize.STRING,
-  salt: Sequelize.STRING,
-  desired: Sequelize.STRING,
-  native: Sequelize.STRING
-});
-
-User
-  .sync()
-  .complete(function(err) {
-    if (!!err) {
-      console.log('An error occurred while creating the table: user.sync', err);
-    } else {
-      console.log('Table created!');
-      }
-    });
 
 var Ratings = sequelize.define('Ratings', {
   id: Sequelize.INTEGER,
   rater: Sequelize.STRING,
   rated: Sequelize.STRING,
+  rating: Sequelize.INTEGER,
   ratingtype: Sequelize.STRING,
   type: Sequelize.STRING
 });
@@ -68,21 +49,5 @@ Ratings
       }
     });
 
-// User
-//   .create({
-//     username: 'aberrantmarble',
-//     firstname: 'aberrant',
-//     lastname: 'marble',
-//     password: 'password',
-//     desired: 'english',
-//     native: 'english'
-//   })
-//   .complete(function(err, user) {
-//     if (!!err) {
-//       console.log('An error occurred while creating the table: user.create', err);
-//     } else {
-//       console.log('User created: ', user);
-//     }
-//   });
 
-module.exports = User;
+module.exports = Ratings;
