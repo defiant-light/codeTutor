@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 angular.module('authentication', [])
 
 	.controller('AuthController', function($scope, $window, $location, Auth){
@@ -48,6 +49,9 @@ angular.module('authentication', [])
 
 	});
 angular.module('mainApp',["ui.router","selectsubject","authentication"
+=======
+angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner"
+>>>>>>> 6c792cc9902cfe21d26df77abd29a1b8f0067824
 	])
 	.config(function($stateProvider, $urlRouterProvider, $httpProvider){
 		
@@ -69,6 +73,7 @@ angular.module('mainApp',["ui.router","selectsubject","authentication"
       })
 			.state('ratepartner', {
         url:'/ratepartner',
+<<<<<<< HEAD
         templateUrl: 'client/ratePartner.html'
       });
 
@@ -119,6 +124,92 @@ angular.module('selectsubject', ['translateModule', 'ngFx'])
 .controller('selectSubjectController', function($scope, $http, Translate) {
   $scope.languages = [['Javascript','us'],['Python','cn'],['Algebra','es'],['Geometry','fr'],['SQL','it']];
   $scope.levels = [["Expert",10],["Experienced",8],["Intermediate",6],["Beginner",4],["Novice",2]];
+=======
+        templateUrl: 'client/ratepartner.html'
+      })
+
+      // .state('logout', {
+      //   url: '/signin', 
+      //   templateUrl: 'client/signin.html'
+      // })
+	})
+.factory('video', function () {
+  return {options:null};
+});
+
+angular.module("ratepartner", [])
+.controller("ratePartnerController", function($scope) {
+  $scope.rating = 5;
+  $scope.rateFunctionKnowledge = function(rating) {
+    var knowledgeRating = rating;
+    // console.log("Rating selected - " + rating);
+    console.log(knowledgeRating + " stars knowledgeable")
+  };
+  $scope.rateFunctionHelpfulness = function(rating) {
+    var helpfulnessRating = rating;
+    // console.log("Rating selected - " + rating);
+    console.log(helpfulnessRating + " stars helpful")
+  };
+  $scope.rateFunctionFriendliness = function(rating) {
+    var friendlinessRating = rating;
+    // console.log("Rating selected - " + rating);
+    console.log(friendlinessRating + " stars friendly")
+  };
+})
+.directive("starRating", function() {
+  return {
+    restrict : "A",
+    template : "<div class='rating'>" +
+               "  <div ng-repeat='star in stars' ng-class='star' ng-click='toggle($index)'>" +
+               "    <i class='fa fa-star'></i>" + //&#9733
+               "  </div>" +
+               "</div>",
+    scope : {
+      ratingValue : "=",
+      max : "=",
+      onRatingSelected : "&"
+    },
+    link : function(scope, elem, attrs) {
+      var updateStars = function() {
+        scope.stars = [];
+        for ( var i = 0; i < scope.max; i++) {
+          scope.stars.push({
+            filled : i < scope.ratingValue
+          });
+        }
+      };
+      scope.toggle = function(index) {
+        scope.ratingValue = index + 1;
+        scope.onRatingSelected({
+          rating : index + 1
+        });
+      };
+      scope.$watch("ratingValue", function(oldVal, newVal) {
+        if (newVal) { updateStars(); }
+       });
+    }
+  };
+});
+
+
+
+angular.module('selectsubject', [])
+.controller('selectSubjectController', function($scope, video) {
+  $scope.subjects = [
+    ['Javascript','us'],
+    ['Python','cn'],
+    ['Algebra','es'],
+    ['Geometry','fr'],
+    ['SQL','it']
+  ];
+  $scope.levels = [
+    ["Expert",10],
+    ["Experienced",8],
+    ["Intermediate",6],
+    ["Beginner",4],
+    ["Novice",2]
+  ];
+>>>>>>> 6c792cc9902cfe21d26df77abd29a1b8f0067824
   $scope.estimates=[
     ["More than 1 hour",60],
     ["More than 30 minutes",30],
@@ -128,23 +219,69 @@ angular.module('selectsubject', ['translateModule', 'ngFx'])
     ["More than 1 minute",1],
     ["Less than 1 minute",0]
     ];
-  $scope.level={};
-  $scope.language = {};
-  $scope.estimate = {};
+  $scope.options = {};
+  //my god we have done it
+  video.options=$scope.options;
+});
 
-  $scope.showChatApp = false;
-  $scope.showingVideo = false;
-  $scope.msg = '';
-  $scope.convo = '';
-  $scope.waiting=false;
 
+angular.module('translateModule', [])
+
+.factory('Translate', function($http){
+
+  // Values are the language codes for Google Translate
+  var languageDict = {
+    English: 'en',
+    Chinese: 'zh-CN',
+    Spanish: 'es',
+    French: 'fr',
+    Italian: 'it'
+  };
+
+  // Function that makes an http request to google translate
+  // with the string to translate (msg) and the language to translate to (targetLang).
+  // Returns a JSON object containing the results from google
+  //
+  // Note: sourceLang specifies the source language of msg and is not required by Google Translate
+  // When sourceLang is not passed to Google Translate, Google will auto-detect the language
+  // of the string to translate
+  var translateMsg = function(msg, targetLang, sourceLang){
+    return $http({
+      method: 'GET',
+      url: 'https://www.googleapis.com/language/translate/v2',
+      params: {
+        key: 'AIzaSyBC5v0BqpuJz6g3roho0JUkwzAX0PoR2Dk',
+        target: languageDict[targetLang],
+        // source: languageDict[sourceLang],
+        q: msg
+      }
+    })
+    .then(function(res){
+      return res.data;
+    })
+  }
+
+  return {};
+  /* progenitor code
+  {
+    translateMsg: translateMsg
+  };
+  */
+})
+angular.module('videochat', [])
+.controller('videoChatController', function($scope,$http,video) {
+  console.log(video);
+  console.log(video.options);
+  
+  //load the video with the options, if they're not null
+  
   $scope.disconnect = function(){
     console.log('disconecting');
     $scope.comm.close();
   }
 
   $scope.submitLanguages = function(languageSelections){
-
+    $scope.video=$scope.language;
     console.log(languageSelections);
     $scope.showingVideo=true;
 
@@ -228,49 +365,10 @@ angular.module('selectsubject', ['translateModule', 'ngFx'])
     var chatBox = document.getElementById('chatBox');
     chatBox.scrollTop = 99999;
   }
-})
-
-
-angular.module('translateModule', [])
-
-.factory('Translate', function($http){
-
-  // Values are the language codes for Google Translate
-  var languageDict = {
-    English: 'en',
-    Chinese: 'zh-CN',
-    Spanish: 'es',
-    French: 'fr',
-    Italian: 'it'
-  };
-
-  // Function that makes an http request to google translate
-  // with the string to translate (msg) and the language to translate to (targetLang).
-  // Returns a JSON object containing the results from google
-  //
-  // Note: sourceLang specifies the source language of msg and is not required by Google Translate
-  // When sourceLang is not passed to Google Translate, Google will auto-detect the language
-  // of the string to translate
-  var translateMsg = function(msg, targetLang, sourceLang){
-    return $http({
-      method: 'GET',
-      url: 'https://www.googleapis.com/language/translate/v2',
-      params: {
-        key: 'AIzaSyBC5v0BqpuJz6g3roho0JUkwzAX0PoR2Dk',
-        target: languageDict[targetLang],
-        // source: languageDict[sourceLang],
-        q: msg
-      }
-    })
-    .then(function(res){
-      return res.data;
-    })
+  
+  
+  if (video.options && video.options.subject){
+    $scope.submitLanguages(video.options);
   }
-
-  return {};
-  /* progenitor code
-  {
-    translateMsg: translateMsg
-  };
-  */
-})
+  
+});

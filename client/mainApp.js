@@ -1,4 +1,4 @@
-angular.module('mainApp',["ui.router","selectsubject","authentication"
+angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner","authentication"
 	])
 	.config(function($stateProvider, $urlRouterProvider, $httpProvider){
 		
@@ -25,6 +25,9 @@ angular.module('mainApp',["ui.router","selectsubject","authentication"
 
       $httpProvider.interceptors.push('AttachTokens');
 	})
+  .factory('video', function () {
+    return {options:null};
+  })
   .factory('AttachTokens',function($window){
     var attach = {
       request: function(object){
@@ -47,3 +50,4 @@ angular.module('mainApp',["ui.router","selectsubject","authentication"
       }
     });
   });
+
