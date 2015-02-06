@@ -127,15 +127,13 @@ angular.module("ratepartner", [])
   };
 
   $scope.notifyRating = function() {
-    console.log("Luke is awesome!");
-    console.log(ratings.options);
     return $http({
       method: 'POST',
       url: '/api/ratepartner',
       data: ratings
     })
     .success(function(data){
-      console.log(data);
+      console.log('hello!');
     })
   }
 
@@ -176,7 +174,7 @@ angular.module("ratepartner", [])
 })
 .factory('ratings', function () {
   return {
-            options:{}
+            options:{}    
          };
 });
 
