@@ -31,12 +31,11 @@ sequelize
 
 
 var Ratings = sequelize.define('Ratings', {
-  id: Sequelize.INTEGER,
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
   rater: Sequelize.STRING,
   rated: Sequelize.STRING,
   rating: Sequelize.INTEGER,
-  ratingtype: Sequelize.STRING,
-  type: Sequelize.STRING
+  ratingtype: Sequelize.STRING
 });
 
 Ratings

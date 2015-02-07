@@ -113,7 +113,15 @@ app.post('/api/ratepartner', function(req, res){
 });
 
 app.get('/api/ratepartner', function(req, res){
-  res.send('Luke is awesome!');
+  var ratings = Ratings.findAll({
+    where: {
+      rating:{
+        gt: 0
+      }
+    }
+  }).then(function(value){
+    res.send(value);
+  });
 })
 
 //Passport facebook auth
