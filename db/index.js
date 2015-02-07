@@ -50,23 +50,23 @@ User
       }
     });
 
-var Ratings = sequelize.define('Ratings', {
-  id: Sequelize.INTEGER,
-  rater: Sequelize.STRING,
-  rated: Sequelize.STRING,
-  ratingtype: Sequelize.STRING,
-  type: Sequelize.STRING
-});
+// var Ratings = sequelize.define('Ratings', {
+//   id: Sequelize.INTEGER,
+//   rater: Sequelize.STRING,
+//   rated: Sequelize.STRING,
+//   ratingtype: Sequelize.STRING,
+//   type: Sequelize.STRING
+// });
 
-Ratings
-  .sync()
-  .complete(function(err) {
-    if (!!err) {
-      console.log('An error occurred while creating the table: user.sync', err);
-    } else {
-      console.log('Table created!');
-      }
-    });
+// Ratings
+//   .sync()
+//   .complete(function(err) {
+//     if (!!err) {
+//       console.log('An error occurred while creating the table: user.sync', err);
+//     } else {
+//       console.log('Table created!');
+//       }
+//     });
 
 // User
 //   .create({
