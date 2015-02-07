@@ -27,9 +27,10 @@ passport.use(new FacebookStrategy({
     callbackURL: creds.callbackURL,
     passReqToCallback: true 
   },
-  function(req, accessToken, refreshToken, profile, done) {
+  function(accessToken, refreshToken, profile, done) {
     var profileIdString = profile.id.toString();
     console.log('cat')
+    
     process.nextTick(function () { 
       Users.findOne({where: { facebookId: profileIdString }})
       .then(function(user) {
