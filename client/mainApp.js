@@ -1,4 +1,4 @@
-angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner","authentication"
+angular.module('mainApp',["ui.router","selectsubject","videochat", "ratepartner","authentication", 'signin'
 	])
 	.config(function($stateProvider, $urlRouterProvider, $httpProvider){
 		

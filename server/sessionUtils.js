@@ -14,6 +14,7 @@ module.exports = {
 	createSession : function(req, res, newUser) {
 		return req.session.regenerate(function() {
 			req.session.user = newUser; 
+			console.log(newUser);
 			res.redirect('/client/selectSubject.html');
 		})
 	}

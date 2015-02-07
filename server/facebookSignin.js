@@ -22,14 +22,16 @@ if(process.env.PORT){
 
 //move clientID and secret as to not expose credentials
 passport.use(new FacebookStrategy({
-    clientID: creds.clientID,
-    clientSecret: creds.clientSecret,
-    callbackURL: creds.callbackURL,
+    clientID: 750262331736676,
+    clientSecret: 'c0b054477dc3ce8979ef818c52f62255',
+    callbackURL: 'http://localhost:3000/auth/facebook/callback',
     passReqToCallback: true 
   },
-  function(req, accessToken, refreshToken, profile, done) {
+  function(accessToken, refreshToken, profile, done) {
     var profileIdString = profile.id.toString();
+    
     console.log('cat')
+
     process.nextTick(function () { 
       Users.findOne({where: { facebookId: profileIdString }})
       .then(function(user) {
@@ -46,7 +48,7 @@ passport.use(new FacebookStrategy({
           });
           done(null, profile);
         }
-      });
+      })
     });
   }
 ));
