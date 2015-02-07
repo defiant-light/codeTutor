@@ -75,44 +75,54 @@ app.get('/api/getroom', function(request, response) {
   }
 });
 
-
 app.post('/api/users/signin', User.signInUser);
 
 app.post('/api/ratepartner', function(req, res){
   console.log("rate partner path activated");
 
-  console.log(req.body);
+  //console.log(req.body);
 
   Ratings.create({
         ratingtype: 'knowledgeRating',
         rating: req.body.options.knowledgeRating,
-        rater: "Luke Davis"
+        rater: "Luke Davis",
+        rated: "Arun Suresh"
       }).then(function(rater){
-        console.log(rater)
+        //console.log(rater)
   });
 
   Ratings.create({
         ratingtype: 'helpfulnessRating',
         rating: req.body.options.helpfulnessRating,
-        rater: "Luke Davis"
+        rater: "Luke Davis",
+        rated: "Arun Suresh"
       }).then(function(rater){
-        console.log(rater)
+        //console.log(rater)
   });
 
 
   Ratings.create({
         ratingtype: 'friendlinessRating',
         rating: req.body.options.friendlinessRating,
-        rater: "Luke Davis"
+        rater: "Luke Davis",
+        rated: "Arun Suresh"
       }).then(function(rater){
-        console.log(rater)
+        //console.log(rater)
   });
   // serve up ratings page
 });
 
-// app.get('/api/ratingroom', function(req, res){
-//   res.send("hello world!");
-// })
+app.get('/api/ratepartner', function(req, res){
+  var ratings = Ratings.findAll({
+    where: {
+      rating:{
+        gt: 0
+      }
+    }
+  }).then(function(value){
+    res.send(value);
+  });
+})
 
 //Passport facebook auth
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_birthday', 'user_likes'] }));
